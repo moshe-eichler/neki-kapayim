@@ -1,7 +1,9 @@
+import { comment } from "postcss";
+
 // questionsConfig.js - Questions configuration file
 export const questionsConfig = {
     // Initial occupation question
-    occupation: {
+    'occupation': {
         id: 'occupation',
         text: 'במה אני עוסק',
         icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/occupation.png',
@@ -53,7 +55,7 @@ export const questionsConfig = {
     },
 
     // Employee path
-    employee: {
+    'employee': {
         'works-with-clients': {
             id: 'works-with-clients',
             section: 'שכיר',
@@ -83,12 +85,12 @@ export const questionsConfig = {
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/frequency.png',
             type: 'single-choice',
             options: [
-                { value: 365, text: 'אחת ליום', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/daily.png' },
-                { value: 52, text: 'אחת לשבוע', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/weekly.png' },
-                { value: 26, text: 'אחת לשבועיים', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/biweekly.png' },
-                { value: 12, text: 'אחת לחודש', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/monthly.png' },
-                { value: 2, text: 'אחת לחצי שנה', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/halfyear.png' },
-                { value: 1, text: 'אחת לשנה', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yearly.png' }
+                { value: 365, text: 'אחת ליום', icon: '' },
+                { value: 52, text: 'אחת לשבוע', icon: '' },
+                { value: 26, text: 'אחת לשבועיים', icon: '' },
+                { value: 12, text: 'אחת לחודש', icon: '' },
+                { value: 2, text: 'אחת לחצי שנה', icon: '' },
+                { value: 1, text: 'אחת לשנה', icon: '' }
             ],
             next: 'damage-amount'
         },
@@ -99,13 +101,13 @@ export const questionsConfig = {
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/damage.png',
             type: 'single-choice',
             options: [
-                { value: 10, text: '10 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount10.png' },
-                { value: 50, text: '50 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount50.png' },
-                { value: 100, text: '100 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount100.png' },
-                { value: 500, text: '500 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount500.png' },
-                { value: 1000, text: '1,000 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount1000.png' },
-                { value: 5000, text: '5,000 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount5000.png' },
-                { value: 10000, text: '10,000 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount10000.png' }
+                { value: 10, text: '10 ש"ח', icon: '' },
+                { value: 50, text: '50 ש"ח', icon: '' },
+                { value: 100, text: '100 ש"ח', icon: '' },
+                { value: 500, text: '500 ש"ח', icon: '' },
+                { value: 1000, text: '1,000 ש"ח', icon: '' },
+                { value: 5000, text: '5,000 ש"ח', icon: '' },
+                { value: 10000, text: '10,000 ש"ח', icon: '' }
             ],
             calculation: 'multiply-previous',
             next: 'hourly-work'
@@ -150,10 +152,10 @@ export const questionsConfig = {
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/percentage.png',
             type: 'single-choice',
             options: [
-                { value: 5, text: '5%', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/percent5.png' },
-                { value: 10, text: '10%', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/percent10.png' },
-                { value: 20, text: '20%', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/percent20.png' },
-                { value: 50, text: '50%', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/percent50.png' }
+                { value: 5, text: '5%', icon: '' },
+                { value: 10, text: '10%', icon: '' },
+                { value: 20, text: '20%', icon: '' },
+                { value: 50, text: '50%', icon: '' }
             ],
             next: 'single-inaccuracy-cost'
         },
@@ -164,9 +166,9 @@ export const questionsConfig = {
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/cost.png',
             type: 'single-choice',
             options: [
-                { value: 5, text: '5 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount5.png' },
-                { value: 10, text: '10 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount10.png' },
-                { value: 20, text: '20 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount20.png' }
+                { value: 5, text: '5 ש"ח', icon: '' },
+                { value: 10, text: '10 ש"ח', icon: '' },
+                { value: 20, text: '20 ש"ח', icon: '' }
             ],
             next: 'time-registration-frequency'
         },
@@ -177,10 +179,10 @@ export const questionsConfig = {
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/frequency.png',
             type: 'single-choice',
             options: [
-                { value: 240, text: 'שעתי (240 פעמים בחודש)', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/hourly.png' },
-                { value: 22, text: 'יומי (22 ימי עבודה בחודש)', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/daily.png' },
-                { value: 4, text: 'שבועי', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/weekly.png' },
-                { value: 1, text: 'חודשי', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/monthly.png' }
+                { value: 240, text: 'שעתי (240 פעמים בחודש)', icon: '' },
+                { value: 22, text: 'יומי (22 ימי עבודה בחודש)', icon: '' },
+                { value: 4, text: 'שבועי', icon: '' },
+                { value: 1, text: 'חודשי', icon: '' }
             ],
             calculation: 'complex-time-calculation',
             next: 'work-faithfulness'
@@ -228,8 +230,8 @@ export const questionsConfig = {
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/times.png',
             type: 'single-choice',
             options: [
-                { value: 2, text: 'פעמיים', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/two.png' },
-                { value: 3, text: '3 פעמים', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/three.png' }
+                { value: 2, text: 'פעמיים', icon: '' },
+                { value: 3, text: '3 פעמים', icon: 'g' }
             ],
             calculation: 'multiply-previous',
             next: 'general-questions'
@@ -245,9 +247,9 @@ export const questionsConfig = {
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/business.png',
             type: 'single-choice',
             options: [
-                { value: 'service-provider', text: 'נותן שירות', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/service.png' },
-                { value: 'product-seller', text: 'מוכר מוצרים', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/product.png' },
-                { value: 'broker', text: 'עסקי תיווך', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png' }
+                { value: 'service-provider', text: 'נותן שירות', icon: '' },
+                { value: 'product-seller', text: 'מוכר מוצרים', icon: '' },
+                { value: 'broker', text: 'עסקי תיווך', icon: '' }
             ],
             next: 'general-questions'
         }
@@ -286,11 +288,11 @@ export const questionsConfig = {
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/money.png',
             type: 'single-choice',
             options: [
-                { value: 52, text: 'אחת לשבוע', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/weekly.png' },
-                { value: 12, text: 'אחת לחודש', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/monthly.png' },
-                { value: 6, text: 'אחת לחודשיים', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/bimonthly.png' },
-                { value: 2, text: 'אחת לחצי שנה', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/halfyear.png' },
-                { value: 1, text: 'אחת לשנה', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yearly.png' }
+                { value: 52, text: 'אחת לשבוע', icon: '' },
+                { value: 12, text: 'אחת לחודש', icon: '' },
+                { value: 6, text: 'אחת לחודשיים', icon: '' },
+                { value: 2, text: 'אחת לחצי שנה', icon: '' },
+                { value: 1, text: 'אחת לשנה', icon: '' }
             ],
             next: 'loan-recording'
         },
@@ -324,13 +326,14 @@ export const questionsConfig = {
             id: 'loan-guy',
             section: 'הלוואות קטנות',
             text: 'האם הנך חושש שבימי בחרותך התחייבת כסף לחבר ולא זכרת או לא היה לך לשלם?',
+            comment: 'סביר להניח שמדובר בסכום שאינו עולה על 100 ש"ח',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/money.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
-            nextYes: '',
+            nextYes: 'excess-return',
             nextNo: 'excess-return',
-            calculation: '?????' // (amount * frequency) / 3
+            amount: 100
         },
 
         'excess-return': {
@@ -338,54 +341,119 @@ export const questionsConfig = {
             section: 'הלוואות קטנות',
             text: 'האם הנך חושש שקילבת פעם סכום "עגול" שהיית אמור להחזיר ממנו עודךף "בהזדמנות" ושכחת?',
             comment: 'יש להניח שסכום ה"עיגול" אינו עולה על 20 ש"ח',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/money.png',
+            type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
-            nextYes: '',
-            nextNo: 'neighbor-borrowing',
-            calculation: '?????' // (amount * frequency) / 3
+            nextYes: 'neighbors',
+            nextNo: 'neighbors',
+            amount: 20
         },
 
-
+        'neighbors': {
+            id: 'neighbors',
+            section: 'השאלה משכנים',
+            text: 'האם אתה גר בבית משותף?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbors.png',
+            type: 'yes-no',
+            // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
+            // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
+            nextYes: 'neighbor-borrowing',
+            nextNo: 'mikveh',
+        },
         'neighbor-borrowing': {
             id: 'neighbor-borrowing',
-            section: 'הלוואה משכנים',
+            section: 'השאלה משכנים',
             text: 'האם אתה או ילדיך נוהגים ללוות מוצרים משכנים במידת הצורך?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbor.png',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbors.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
             nextYes: 'neighbor-frequency',
-            nextNo: 'mikveh'
+            nextNo: 'neighbors-damage'
         },
         'neighbor-frequency': {
             id: 'neighbor-frequency',
             text: 'באיזו תדירות זה יכול לקרות?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbor.png',
+            section: 'הלוואה משכנים',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbors.png',
             type: 'single-choice',
             options: [
-                { value: 104, text: 'פעמיים בשבוע', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/biweekly.png' },
-                { value: 52, text: 'אחת לשבוע', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/weekly.png' },
-                { value: 12, text: 'אחת לחודש', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/monthly.png' },
-                { value: 6, text: 'אחת לחודשיים', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/bimonthly.png' },
-                { value: 2, text: 'אחת לחצי שנה', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/halfyear.png' },
-                { value: 1, text: 'אחת לשנה', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yearly.png' }
+                { value: 104, text: 'פעמיים בשבוע', icon: '' },
+                { value: 52, text: 'אחת לשבוע', icon: '' },
+                { value: 12, text: 'אחת לחודש', icon: '' },
+                { value: 6, text: 'אחת לחודשיים', icon: '' },
+                { value: 2, text: 'אחת לחצי שנה', icon: '' },
+                { value: 1, text: 'אחת לשנה', icon: '' }
             ],
             next: 'neighbor-recording'
         },
         'neighbor-recording': {
             id: 'neighbor-recording',
             text: 'האם הנך נוהג לרשום הלוואות אלו?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/notebook.png',
+            section: 'הלוואה משכנים',
+            comment: 'יש להניח שכשליש מהפעמים לא החזרת. יש להעריך שווי ממוצע של מוצר הנלווה משכנים בכ-10 ש"ח',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbors.png',
+            type: 'yes-no',
+            // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
+            // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
+            nextYes: 'neighbors-damage',
+            nextNo: 'neighbors-damage',
+            calculation: 'neighbor-calculation' // (frequency * 10) / 3
+        },
+        'neighbors-damage': {
+            id: 'neighbors-damage',
+            text: 'האם ילדיך הקטנים מורידים לפעמים את פח האשפה?',
+            section: 'נזקי שכנים',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbor.png',
+            type: 'yes-no',
+            // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
+            // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
+            nextYes: 'neighbors-damage-amount',
+            nextNo: 'general-miscellaneous',
+        },
+        'neighbors-damage-amount': {
+            id: 'neighbors-damage-amount',
+            text: 'האם יתכן שחלק מהאשפה נפל בדרך וגרם נזק לשכן?',
+            section: 'נזקי שכנים',
+            comment: 'סביר שהדבר אירע כ-3 פעמים יש להעריך הנזק לכל פעם בכ-10 ש"ח',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbor.png',
+            type: 'yes-no',
+            // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
+            // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
+            nextYes: 'neighbors-renovations',
+            nextNo: 'neighbors-renovations',
+            amount: 30
+        },
+        'neighbors-renovations': {
+            id: 'neighbors-renovations',
+            text: 'האם ערכת שיפוצים בשנה החולפת?',
+            section: 'נזקי שכנים',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbor.png',
+            type: 'yes-no',
+            // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
+            // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
+            nextYes: 'neighbors-renovations-sum',
+            nextNo: 'mikveh',
+        },
+        'neighbors-renovations-sum': {
+            id: 'neighbors-renovations-sum',
+            text: 'האם יתכן כי במסגרת השיפוצים נגרם נזק לכביסה של שכניך או לרכוש המשתוף?',
+            section: 'נזקי שכנים',
+            comment: 'נזק לרכוש המשותף במסגרת בנייה עשוי להסתכם בכ-500 ש"ח',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbor.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
             nextYes: 'mikveh',
             nextNo: 'mikveh',
-            calculation: 'neighbor-calculation' // (frequency * 10) / 3
+            amount: 500
         },
-        mikveh: {
+
+        'mikveh': {
             id: 'mikveh',
             text: 'האם אתה נוהג לטבול במקווה?',
+            section: 'מקווה',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/mikveh.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
@@ -395,8 +463,10 @@ export const questionsConfig = {
         },
         'mikveh-payment': {
             id: 'mikveh-payment',
-            text: 'האם סביר שאתה נכנס לפעמים בלי לשלם?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/payment.png',
+            text: 'האם סביר שאתה נכנס לפעמים בלי לשלם? (כי אין לך כסף או שנגמרו הפעימות)',
+            section: 'מקווה',
+            comment: 'התשלום הממוצע לטבילה במקווה - בשקלול ערבי שבת וחג - הינו 7 ש"ח יש להעריך שסך הפעמים שהנך נכנס ללא תשלום אינו עולה על 10',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/mikveh.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
@@ -407,17 +477,34 @@ export const questionsConfig = {
         'mikveh-shabbat': {
             id: 'mikveh-shabbat',
             text: 'האם נכנסת בשבת למקווה במקום זר ולא שילמת אחרי שבת?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/shabbat.png',
+            section: 'מקווה',
+            comment: 'סביר שהדבר לא התרחש יותר מפעם אחת בשנה',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/mikveh.png',
+            type: 'yes-no',
+            // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
+            // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
+            nextYes: 'mikveh-clothes',
+            nextNo: 'mikveh-clothes',
+            amount: 15
+        },
+        'mikveh-clothes': {
+            id: 'mikveh-clothes',
+            text: 'האם יתכן שלקחת בטעות כביסה של מישהו אחר?',
+            section: 'מקווה',
+            comment: 'יש להעריך שווי שקית כביסה (לא חדשה) בכ-50 ש"ח',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/mikveh.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
             nextYes: 'smoking',
             nextNo: 'smoking',
-            amount: 15
+            amount: 50
         },
-        smoking: {
+
+        'smoking': {
             id: 'smoking',
             text: 'האם אתה מעשן?',
+            section: 'נזקי עישון',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/smoking.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
@@ -428,7 +515,8 @@ export const questionsConfig = {
         'cigarette-requests': {
             id: 'cigarette-requests',
             text: 'האם הנך מבקש לפעמים סיגריות מאחרים?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/cigarette.png',
+            section: 'נזקי עישון',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/smoking.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
@@ -436,9 +524,11 @@ export const questionsConfig = {
             nextNo: 'car-ownership',
             amount: 30
         },
+
         'car-ownership': {
             id: 'car-ownership',
             text: 'האם הנך בעל רכב?',
+            section: 'נזקי רכב',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/car.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
@@ -449,7 +539,8 @@ export const questionsConfig = {
         'car-damage': {
             id: 'car-damage',
             text: 'האם אירע לך פעם שפגעת ברכב חונה ולא שילמת?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/car-damage.png',
+            section: 'נזקי רכב',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/car.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
@@ -460,7 +551,8 @@ export const questionsConfig = {
         'parking-damage': {
             id: 'parking-damage',
             text: 'האם יתכן שלקחת חניה של מישהו וגרמת לו נזק או עיכוב?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/parking.png',
+            section: 'נזקי רכב',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/car.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
@@ -471,7 +563,8 @@ export const questionsConfig = {
         'mud-splashing': {
             id: 'mud-splashing',
             text: 'האם יתכן שבנסיעה בימות הגשמים התזת מים ובוץ על עוברי אורח והיזקת למלבושיהם?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/rain.png',
+            section: 'נזקי רכב',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/car.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
@@ -479,6 +572,7 @@ export const questionsConfig = {
             nextNo: 'general-miscellaneous',
             amount: 100
         },
+
         'general-miscellaneous': {
             id: 'general-miscellaneous',
             text: 'האם יתכן שביצעת רכישה במכולת ושכחת לשלם על אחד המוצרים?',
