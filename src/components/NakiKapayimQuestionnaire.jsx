@@ -246,9 +246,9 @@ const NakiKapayimQuestionnaire = () => {
         <div className="max-w-4xl mx-auto">
           <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-xl p-6">
             <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              {/* <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">💰</span>
-              </div>
+              </div> */}
               <h2 className="text-2xl font-bold text-gray-800 mb-2">סיכום השאלון</h2>
               <p className="text-gray-600">השאלון הושלם בהצלחה</p>
             </div>
@@ -425,6 +425,9 @@ const NakiKapayimQuestionnaire = () => {
                     ))
                 )}
               </div>
+              <p className='mt-4'>
+                {questionData.comment}
+              </p>
             </div>
 
             {/* Navigation Buttons */}
