@@ -410,7 +410,7 @@ export const questionsConfig = {
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
             nextYes: 'neighbors-damage-amount',
-            nextNo: 'general-miscellaneous',
+            nextNo: 'taxi',
         },
         'neighbors-damage-amount': {
             id: 'neighbors-damage-amount',
@@ -534,7 +534,7 @@ export const questionsConfig = {
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
             nextYes: 'car-damage',
-            nextNo: 'general-miscellaneous'
+            nextNo: 'taxi'
         },
         'car-damage': {
             id: 'car-damage',
@@ -568,15 +568,42 @@ export const questionsConfig = {
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
-            nextYes: 'general-miscellaneous',
-            nextNo: 'general-miscellaneous',
+            nextYes: 'taxi',
+            nextNo: 'taxi',
             amount: 100
         },
 
-        'general-miscellaneous': {
-            id: 'general-miscellaneous',
+        'taxi': {
+            id: 'taxi',
+            text: 'האם אירע שהזמנת מונית ונסעת במונית אחרת - או שהחלטת ללכת ברגל - מבלי לבטל את המונית שהזמנת?',
+            comment: 'יש להעריך את הנזק לנהג המונית בכ-20 ש"ח',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
+            type: 'yes-no',
+            // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
+            // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
+            nextYes: 'elevator',
+            nextNo: 'elevator',
+            amount: 20
+        },
+        'elevator': {
+            id: 'elevator',
+            text: 'האם יתכן שקיצרת דרכך באמצעות מעבר בבנין מגורים אחר ושימוש במעלית?',
+            comment: 'יש להעריך את עלות השימוש במעליות שלא כדין בכ-5 ש"ח',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
+            type: 'yes-no',
+            // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
+            // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
+            nextYes: 'grocery',
+            nextNo: 'grocery',
+            amount: 5
+        },
+        'grocery': {
+            id: 'grocery',
             text: 'האם יתכן שביצעת רכישה במכולת ושכחת לשלם על אחד המוצרים?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/shopping.png',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
@@ -587,7 +614,8 @@ export const questionsConfig = {
         'family-damage': {
             id: 'family-damage',
             text: 'האם יתכן שאחד מילדיך ביצע נזק לרכוש כלשהו ולא סיפר לך?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/family.png',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
@@ -598,7 +626,20 @@ export const questionsConfig = {
         'forgotten-item': {
             id: 'forgotten-item',
             text: 'האם יתכן שמישהו מסר לך חפץ למסור למישהו והחפץ נשכח אצלך?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/item.png',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
+            type: 'yes-no',
+            // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
+            // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
+            nextYes: 'transportation',
+            nextNo: 'transportation',
+            amount: 25
+        },
+        'transportation': {
+            id: 'transportation',
+            text: 'האם יתכן שמישהו מבני משפחתך נסע בתחבורה ציבורית ולא שילם? (כיוון שהרב-קו לא היה אצלו)',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
@@ -606,10 +647,14 @@ export const questionsConfig = {
             nextNo: 'books-possession',
             amount: 25
         },
+        'transportation-frequency': {
+
+        },
         'books-possession': {
             id: 'books-possession',
             text: 'האם קיימים תחת ידך ספרים שאינם שלך ואינך יודע מי בעליהם?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/books.png',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
@@ -619,7 +664,8 @@ export const questionsConfig = {
         'books-count': {
             id: 'books-count',
             text: 'בכמה ספרים מדובר?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/book-count.png',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
             type: 'single-choice',
             options: [
                 { value: 15, text: 'ספר אחד', icon: '' },
@@ -631,7 +677,8 @@ export const questionsConfig = {
         'final-question': {
             id: 'final-question',
             text: 'האם יתכן כי הזמנת תור לרופא / איש מקצוע / נותן שירות, ולא הופעת, מבלי להודיע מראש?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/appointment.png',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
