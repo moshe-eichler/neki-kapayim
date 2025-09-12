@@ -622,9 +622,9 @@ export const questionsConfig = {
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/book-count.png',
             type: 'single-choice',
             options: [
-                { value: 15, text: 'ספר אחד', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/book1.png' },
-                { value: 37.5, text: '2-3 ספרים', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/book2-3.png' },
-                { value: 150, text: 'כ-10 ספרים', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/book10.png' }
+                { value: 15, text: 'ספר אחד', icon: '' },
+                { value: 37.5, text: '2-3 ספרים', icon: '' },
+                { value: 150, text: 'כ-10 ספרים', icon: '' }
             ],
             next: 'final-question'
         },

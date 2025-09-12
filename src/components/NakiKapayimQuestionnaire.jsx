@@ -43,9 +43,11 @@ const NakiKapayimQuestionnaire = () => {
           return frequency * amount;
 
         case 'loan-calculation':
-          const loanAmount = previousAnswers['loan-amount'] || 0;
-          const loanFreq = previousAnswers['loan-frequency'] || 0;
-          return Math.round((loanAmount * loanFreq) / 3);
+          if (answer === 'no') {
+            const loanAmount = previousAnswers['loan-amount'] || 0;
+            const loanFreq = previousAnswers['loan-frequency'] || 0;
+            return Math.round((loanAmount * loanFreq) / 3);
+          }
 
         case 'neighbor-calculation':
           if (answer === 'no') {
@@ -414,7 +416,7 @@ const NakiKapayimQuestionnaire = () => {
                         <button
                             key={index}
                             onClick={() => handleAnswer(option.value)}
-                            className="flex-1 min-w-[120px] max-w-[200px] p-4 text-right bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-300 rounded-lg transition-colors flex items-center justify-center"
+                            className="flex-1 min-w-[80px] max-w-[150px] min-h-[80px] text-center bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-300 rounded-lg transition-colors flex items-center justify-center"
                         >
                           {option.icon ? (
                               <img
@@ -422,7 +424,7 @@ const NakiKapayimQuestionnaire = () => {
                                   alt={`${option.text} Icon`}
                               />
                           ) : (
-                            <span className='text-center'>{option.text}</span>
+                            <span className='text-center p-4'>{option.text}</span>
                           )}
                         </button>
                     ))
