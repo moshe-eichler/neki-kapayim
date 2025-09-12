@@ -298,7 +298,6 @@ const NakiKapayimQuestionnaire = () => {
             <div className="text-center">
               <a
                 href={`https://ultra.kesherhk.info/external/paymentPage/317774?total=${totalAmount}`}
-                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-teal-600 text-white px-8 py-4 rounded-lg hover:bg-teal-700 transition-colors inline-block text-lg font-semibold"
               >
