@@ -11,6 +11,9 @@ const NakiKapayimQuestionnaire = () => {
   const [isComplete, setIsComplete] = useState(false);
   const [questionHistory, setQuestionHistory] = useState(['occupation']);
   const [answerDetails, setAnswerDetails] = useState([]);
+  const [customInput, setCustomInput] = useState('');
+  const [showCustomInput, setShowCustomInput] = useState(false);
+  const [customPlaceholder, setCustomPlaceholder] = useState('הכנס מספר...');
 
   const getCurrentQuestionData = () => {
     if (currentQuestion === 'occupation') {
@@ -35,11 +38,30 @@ const NakiKapayimQuestionnaire = () => {
       return questionData.amount;
     }
 
+    // Handle family-expenses-frequency special case
+    if (questionData.id === 'family-expenses-frequency' && answer === 'no') {
+      return previousAnswers['family-expenses-amount'] || 0;
+    }
+
+    if (questionData.id === 'faithfulness-frequency' && answer === 'no') {
+      return previousAnswers['faithfulness-damage-amount'] || 0;
+    }
+
     if (questionData.calculation) {
       switch (questionData.calculation) {
         case 'multiply-previous':
-          const frequency = previousAnswers['error-frequency'] || previousAnswers['faithfulness-damage-amount'] || 1;
-          const amount = typeof answer === 'number' ? answer : 0;
+          let frequency = previousAnswers['error-frequency'] ||
+                         previousAnswers['faithfulness-damage-amount'] ||
+                         previousAnswers['family-expenses-times'] || 1;
+
+          let amount = typeof answer === 'number' ? answer : 0;
+
+          // Handle family expenses calculation
+          if (questionData.id === 'family-expenses-times') {
+            amount = previousAnswers['family-expenses-amount'] || 0;
+            frequency = typeof answer === 'number' ? answer : 0;
+          }
+
           return frequency * amount;
 
         case 'loan-calculation':
@@ -60,13 +82,12 @@ const NakiKapayimQuestionnaire = () => {
           const cost = previousAnswers['single-inaccuracy-cost'] || 0;
           const freq = typeof answer === 'number' ? answer : 0;
           return Math.round((percentage / 100) * cost * freq * 12); // Monthly calculation
+      
+        case 'option-value':
+          return typeof answer === 'number' ? answer : 0;
       }
     }
-
-    // if (typeof answer === 'number' && questionData.options && questionData.id != 'loan-frequency') {
-    //   return answer;
-    // }
-
+  
     return 0;
   };
 
@@ -115,22 +136,53 @@ const NakiKapayimQuestionnaire = () => {
     return null;
   };
 
+  const handleCustomOptionClick = (option) => {
+    if (option.value === 'custom') {
+      setShowCustomInput(true);
+      setCustomPlaceholder(option.placeholder || 'הכנס מספר...');
+    } else {
+      handleAnswer(option.value);
+    }
+  };
+
+  const handleCustomInputSubmit = () => {
+    if (customInput.trim()) {
+      handleAnswer('custom');
+    }
+  };
+
   const handleAnswer = (answer) => {
     const questionData = getCurrentQuestionData();
     if (!questionData) return;
 
-    const newAnswers = { ...answers, [currentQuestion]: answer };
+    // Handle custom input
+    let finalAnswer = answer;
+    let displayAnswer = answer;
+
+    if (answer === 'custom' && customInput) {
+      finalAnswer = parseFloat(customInput) || 0;
+      displayAnswer = customInput;
+    }
+
+    const newAnswers = { ...answers, [currentQuestion]: finalAnswer };
     setAnswers(newAnswers);
 
     // Calculate amount to add
-    const amountToAdd = calculateAmount(questionData, answer, newAnswers);
+    const amountToAdd = calculateAmount(questionData, finalAnswer, newAnswers);
 
     // Store answer details for summary
+    let answerText;
+    if (answer === 'custom') {
+      answerText = `${displayAnswer}`;
+    } else {
+      answerText = getAnswerText(currentQuestion, finalAnswer);
+    }
+
     const newAnswerDetails = [...answerDetails, {
       questionId: currentQuestion,
       questionText: questionData.text,
-      answer: answer,
-      answerText: getAnswerText(currentQuestion, answer),
+      answer: finalAnswer,
+      answerText: answerText,
       amount: amountToAdd
     }];
     setAnswerDetails(newAnswerDetails);
@@ -139,16 +191,21 @@ const NakiKapayimQuestionnaire = () => {
       setTotalAmount(prev => prev + amountToAdd);
     }
 
+    // Reset custom input state
+    setCustomInput('');
+    setShowCustomInput(false);
+    setCustomPlaceholder('הכנס מספר...');
+
     // Determine next question
     let nextQuestion = null;
 
     if (currentQuestion === 'occupation') {
-      setCurrentPath(answer);
-      const pathQuestions = questionsConfig[answer];
+      setCurrentPath(finalAnswer);
+      const pathQuestions = questionsConfig[finalAnswer];
       nextQuestion = Object.keys(pathQuestions)[0];
     } else {
       if (questionData.type === 'yes-no') {
-        nextQuestion = answer === 'yes' ? questionData.nextYes : questionData.nextNo;
+        nextQuestion = finalAnswer === 'yes' ? questionData.nextYes : questionData.nextNo;
       } else {
         nextQuestion = questionData.next;
       }
@@ -205,25 +262,28 @@ const NakiKapayimQuestionnaire = () => {
 
   const handleBack = () => {
     if (questionHistory.length <= 1) return;
-
+  
     const newHistory = [...questionHistory];
     newHistory.pop(); // Remove current question
     const previousQuestion = newHistory[newHistory.length - 1];
 
-    setQuestionHistory(newHistory);
-    setCurrentQuestion(previousQuestion);
-
     // Remove the answer for the current question and its details
     const newAnswers = { ...answers };
-    delete newAnswers[currentQuestion];
-    setAnswers(newAnswers);
-
-    const newAnswerDetails = answerDetails.filter(detail => detail.questionId !== currentQuestion);
-    setAnswerDetails(newAnswerDetails);
+    delete newAnswers[previousQuestion];
 
     // Recalculate total amount
+    const newAnswerDetails = answerDetails.filter(detail => detail.questionId !== previousQuestion);
     const newTotal = newAnswerDetails.reduce((sum, detail) => sum + detail.amount, 0);
+
+    setQuestionHistory(newHistory);
+    setCurrentQuestion(previousQuestion);
+    setAnswerDetails(newAnswerDetails);
     setTotalAmount(newTotal);
+
+    // Reset custom input state
+    setCustomInput('');
+    setShowCustomInput(false);
+    setCustomPlaceholder('הכנס מספר...');
   };
 
   const handleFinishEarly = () => {
@@ -250,9 +310,6 @@ const NakiKapayimQuestionnaire = () => {
         <div className="max-w-4xl mx-auto">
           <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-xl p-6">
             <div className="text-center mb-6">
-              {/* <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">💰</span>
-              </div> */}
               <h2 className="text-2xl font-bold text-gray-800 mb-2">סיכום השאלון</h2>
               <p className="text-gray-600">השאלון הושלם בהצלחה</p>
             </div>
@@ -414,7 +471,7 @@ const NakiKapayimQuestionnaire = () => {
                     questionData.options?.map((option, index) => (
                         <button
                             key={index}
-                            onClick={() => handleAnswer(option.value)}
+                            onClick={() => handleCustomOptionClick(option)}
                             className="flex-1 min-w-[80px] max-w-[150px] min-h-[80px] text-center bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-300 rounded-lg transition-colors flex items-center justify-center"
                         >
                           {option.icon ? (
@@ -429,6 +486,33 @@ const NakiKapayimQuestionnaire = () => {
                     ))
                 )}
               </div>
+
+              {/* Custom input field */}
+              {showCustomInput && (
+                <div className="w-full mt-4 flex gap-2">
+                  <input
+                    type="number"
+                    value={customInput}
+                    onChange={(e) => setCustomInput(e.target.value)}
+                    placeholder={customPlaceholder}
+                    className="flex-1 p-3 border border-gray-300 rounded-lg text-center"
+                    autoFocus
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        handleCustomInputSubmit();
+                      }
+                    }}
+                  />
+                  <button
+                    onClick={handleCustomInputSubmit}
+                    disabled={!customInput.trim()}
+                    className="px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+                  >
+                    אישור
+                  </button>
+                </div>
+              )}
+
               <p className='mt-4'>
                 {questionData.comment}
               </p>

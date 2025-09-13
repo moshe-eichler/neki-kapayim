@@ -90,7 +90,8 @@ export const questionsConfig = {
                 { value: 26, text: 'אחת לשבועיים', icon: '' },
                 { value: 12, text: 'אחת לחודש', icon: '' },
                 { value: 2, text: 'אחת לחצי שנה', icon: '' },
-                { value: 1, text: 'אחת לשנה', icon: '' }
+                { value: 1, text: 'אחת לשנה', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '', placeholder: 'הזן כמה פעמים בסה"כ סביר שזה קרה בשנה החולפת' }
             ],
             next: 'damage-amount'
         },
@@ -107,7 +108,8 @@ export const questionsConfig = {
                 { value: 500, text: '500 ש"ח', icon: '' },
                 { value: 1000, text: '1,000 ש"ח', icon: '' },
                 { value: 5000, text: '5,000 ש"ח', icon: '' },
-                { value: 10000, text: '10,000 ש"ח', icon: '' }
+                { value: 10000, text: '10,000 ש"ח', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
             ],
             calculation: 'multiply-previous',
             next: 'hourly-work'
@@ -168,7 +170,8 @@ export const questionsConfig = {
             options: [
                 { value: 5, text: '5 ש"ח', icon: '' },
                 { value: 10, text: '10 ש"ח', icon: '' },
-                { value: 20, text: '20 ש"ח', icon: '' }
+                { value: 20, text: '20 ש"ח', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
             ],
             next: 'time-registration-frequency'
         },
@@ -205,10 +208,11 @@ export const questionsConfig = {
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/damage.png',
             type: 'single-choice',
             options: [
-                { value: 10, text: '10 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount10.png' },
-                { value: 100, text: '100 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount100.png' },
-                { value: 500, text: '500 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount500.png' },
-                { value: 1000, text: '1,000 ש"ח', icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/amount1000.png' }
+                { value: 10, text: '10 ש"ח', icon: '' },
+                { value: 100, text: '100 ש"ח', icon: '' },
+                { value: 500, text: '500 ש"ח', icon: '' },
+                { value: 1000, text: '1,000 ש"ח', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
             ],
             next: 'faithfulness-frequency'
         },
@@ -231,7 +235,8 @@ export const questionsConfig = {
             type: 'single-choice',
             options: [
                 { value: 2, text: 'פעמיים', icon: '' },
-                { value: 3, text: '3 פעמים', icon: 'g' }
+                { value: 3, text: '3 פעמים', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
             ],
             calculation: 'multiply-previous',
             next: 'general-questions'
@@ -339,7 +344,7 @@ export const questionsConfig = {
         'excess-return': {
             id: 'excess-return',
             section: 'הלוואות קטנות',
-            text: 'האם הנך חושש שקילבת פעם סכום "עגול" שהיית אמור להחזיר ממנו עודךף "בהזדמנות" ושכחת?',
+            text: 'האם הנך חושש שקיבלת פעם סכום "עגול" שהיית אמור להחזיר ממנו עודךף "בהזדמנות" ושכחת?',
             comment: 'יש להניח שסכום ה"עיגול" אינו עולה על 20 ש"ח',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/money.png',
             type: 'yes-no',
@@ -633,22 +638,37 @@ export const questionsConfig = {
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
             nextYes: 'transportation',
             nextNo: 'transportation',
-            amount: 25
         },
         'transportation': {
             id: 'transportation',
             text: 'האם יתכן שמישהו מבני משפחתך נסע בתחבורה ציבורית ולא שילם? (כיוון שהרב-קו לא היה אצלו)',
+            comment: 'יש להעריך שווי ממוצע לנסיעה בכ-5 ש"ח',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
-            nextYes: 'books-possession',
+            nextYes: 'transportation-frequency',
             nextNo: 'books-possession',
-            amount: 25
         },
         'transportation-frequency': {
-
+            id: 'transportation',
+            text: 'באיזו תדירות עלול הדבר להתרחש? (5 ש"ח על כל פעם)',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
+            // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
+            // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
+            type: 'single-choice',
+            options: [
+                { value: 1825, text: 'פעם ביום', icon: '' },
+                { value: 260, text: 'פעם בשבוע', icon: '' },
+                { value: 130, text: 'פעם בשבועיים', icon: '' },
+                { value: 60, text: 'פעם בחודש', icon: '' },
+                { value: 10, text: 'פעם בחצי שנה', icon: '' },
+                { value: 5, text: 'פעם בשנה', icon: '' }
+            ],
+            calculation: 'option-value',
+            next: 'books-possession',
         },
         'books-possession': {
             id: 'books-possession',
@@ -659,11 +679,12 @@ export const questionsConfig = {
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
             nextYes: 'books-count',
-            nextNo: 'final-question'
+            nextNo: 'forgotten-debt'
         },
         'books-count': {
             id: 'books-count',
-            text: 'בכמה ספרים מדובר?',
+            text: 'בכמה ספרים מדובר? (15 ש"ח לספר)',
+            comment: 'ניתן לשער שווי ממוצע של ספר (לא חדש) בכ-15 ש"ח',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
             type: 'single-choice',
@@ -672,19 +693,117 @@ export const questionsConfig = {
                 { value: 37.5, text: '2-3 ספרים', icon: '' },
                 { value: 150, text: 'כ-10 ספרים', icon: '' }
             ],
-            next: 'final-question'
+            calculation: 'option-value',
+            next: 'forgotten-debt'
         },
-        'final-question': {
-            id: 'final-question',
+        'forgotten-debt': {
+            id: 'forgotten-debt',
+            text: 'האם זכור לך שביקשת לפרוע חוב או להחזיר חפץ כלשהו ולא הצלחת לאתר את הבעלים? (50 ש"ח)',
+            comment: 'בהיעדר נתונים ניתן להניח כי מדובר בכ-50 ש"ח',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
+            type: 'yes-no',
+            // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
+            // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
+            nextYes: 'kids-reading',
+            nextNo: 'kids-reading',
+            amount: 50
+        },
+        'kids-reading': {
+            id: 'kids-reading',
+            text: 'האם יתכן שילדיך נוהגים לקרוא בקביעות בספרי קומיקס בחנות ספרים? (100 ש"ח)',
+            comment: 'יש לשער את הנזק הנגרם לספרים שאינם ראויים עוד למכירה בכ-100 ש"ח',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
+            type: 'yes-no',
+            // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
+            // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
+            nextYes: 'charity-money',
+            nextNo: 'charity-money',
+            amount: 100
+        },
+        'charity-money': {
+            id: 'charity-money',
+            text: 'האם אי פעם נשארו בידיך כספי צדקה ולא ידעת למי להעבירם?',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
+            type: 'yes-no',
+            // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
+            // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
+            nextYes: 'charity-amount',
+            nextNo: 'service'
+        },
+        'charity-amount': {
+            id: 'charity-amount',
+            text: 'באיזה סכום מדובר?',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
+            type: 'single-choice',
+            options: [
+                { value: 100, text: '100 ש"ח', icon: '' },
+                { value: 500, text: '500 ש"ח', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
+            ],
+            calculation: 'option-value',
+            next: 'service'
+        },
+        'service': {
+            id: 'service',
             text: 'האם יתכן כי הזמנת תור לרופא / איש מקצוע / נותן שירות, ולא הופעת, מבלי להודיע מראש?',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
             type: 'yes-no',
             // iconYes: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/yes.png',
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
-            nextYes: 'summary',
-            nextNo: 'summary',
+            nextYes: 'family-expenses',
+            nextNo: 'family-expenses',
             amount: 50
+        },
+        'family-expenses': {
+            id: 'family-expenses',
+            text: 'במשפחות רבות נהוג לערוך שמחות / נסיעות / טיולים / לרכוש מתנות, במשותף, כאשר לאחר מכן עורכים חשבון כמה כל אחד נתן, והאם הוא צריך להוסיף או שמגיע לו בחזרה. האם הנך חושש שבמסגרת חשבונות אלו טעית על חשבון בני המשפחה?',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
+            type: 'yes-no',
+            nextYes: 'family-expenses-amount',
+            nextNo: 'summary'
+        },
+        'family-expenses-amount': {
+            id: 'family-expenses-amount',
+            text: 'בכמה הנך מעריך טעות כזו?',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
+            type: 'single-choice',
+            options: [
+                { value: 50, text: '50 ש"ח', icon: '' },
+                { value: 100, text: '100 ש"ח', icon: '' },
+                { value: 500, text: '500 ש"ח', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
+            ],
+            next: 'family-expenses-frequency'
+        },
+        'family-expenses-frequency': {
+            id: 'family-expenses-frequency',
+            text: 'האם הנך חושש שטעות כזו אירעה לך יותר מפעם אחת השנה?',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
+            type: 'yes-no',
+            nextYes: 'family-expenses-times',
+            nextNo: 'summary'
+        },
+        'family-expenses-times': {
+            id: 'family-expenses-times',
+            text: 'כמה פעמים לדעתך זה עלול היה לקרות השנה?',
+            section: 'כללי',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
+            type: 'single-choice',
+            options: [
+                { value: 2, text: 'פעמיים', icon: '' },
+                { value: 3, text: '3 פעמים', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
+            ],
+            calculation: 'multiply-previous',
+            next: 'summary'
         }
     }
 };
