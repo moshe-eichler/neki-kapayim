@@ -256,6 +256,289 @@ export const questionsConfig = {
                 { value: 'product-seller', text: 'מוכר מוצרים', icon: '' },
                 { value: 'broker', text: 'עסקי תיווך', icon: '' }
             ],
+        }
+    },
+
+    // Service provider path
+    'service-provider': {
+        'business-clients-count': {
+            id: 'business-clients-count',
+            section: 'נותן שירות',
+            text: 'עם כמה לקוחות הנך עובד בשנה?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
+            type: 'single-choice',
+            options: [
+                { value: 10, text: '10', icon: '' },
+                { value: 100, text: '100', icon: '' },
+                { value: 500, text: '500', icon: '' },
+                { value: 1000, text: '1,000', icon: '' },
+                { value: 'custom', text: 'יותר', icon: '', placeholder: 'הכנס מספר לקוחות...' }
+            ],
+            next: 'service-quality'
+        },
+        'service-quality': {
+            id: 'service-quality',
+            section: 'נותן שירות',
+            text: 'הלקוחות משלמים לך מחיר מלא תמורת קבלת שירות מלא. האם יתכן שלא כל הלקוחות שלך קיבלו מצדך את מלוא השירות (מבחינת זמן, איכות, זמינות)?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
+            type: 'yes-no',
+            nextYes: 'service-deficiency-percentage',
+            nextNo: 'general-questions'
+        },
+        'service-deficiency-percentage': {
+            id: 'service-deficiency-percentage',
+            section: 'נותן שירות',
+            text: 'כמה אחוזים מלקוחותיך (יהודים בלבד) לא קיבלו לדעתך את מלוא השירות?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
+            type: 'single-choice',
+            options: [
+                { value: 5, text: '5%', icon: '' },
+                { value: 10, text: '10%', icon: '' },
+                { value: 25, text: '25%', icon: '' },
+                { value: 50, text: '50%', icon: '' },
+                { value: 80, text: '80%', icon: '' }
+            ],
+            next: 'transaction-average'
+        },
+        'transaction-average': {
+            id: 'transaction-average',
+            section: 'נותן שירות',
+            text: 'מהו ממוצע העסקה שבינך לבין לקוחותיך?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
+            type: 'single-choice',
+            options: [
+                { value: 50, text: '50 ש"ח', icon: '' },
+                { value: 100, text: '100 ש"ח', icon: '' },
+                { value: 500, text: '500 ש"ח', icon: '' },
+                { value: 1000, text: '1,000 ש"ח', icon: '' },
+                { value: 5000, text: '5,000 ש"ח', icon: '' },
+                { value: 10000, text: '10,000 ש"ח', icon: '' },
+                { value: 50000, text: '50,000 ש"ח', icon: '' },
+                { value: 100000, text: '100,000 ש"ח', icon: '' },
+                { value: 500000, text: '500,000 ש"ח', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '', placeholder: 'אם התשלום הינו ריטיינר חודשי, ציין את הסכום השנתי המלא' }
+            ],
+            next: 'actual-deficiency-percentage'
+        },
+        'actual-deficiency-percentage': {
+            id: 'actual-deficiency-percentage',
+            section: 'נותן שירות',
+            text: 'בכמה אחוזי ליקוי מדובר?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
+            type: 'single-choice',
+            options: [
+                { value: 10, text: '10%', icon: '' },
+                { value: 20, text: '20%', icon: '' },
+                { value: 30, text: '30%', icon: '' },
+                { value: 40, text: '40%', icon: '' },
+                { value: 50, text: '50%', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
+            ],
+            next: 'service-damage-potential'
+        },
+        'service-damage-potential': {
+            id: 'service-damage-potential',
+            section: 'נותן שירות',
+            text: 'האם יתכן שבעקבות שירות לקוי שהענקת נגרם נזק ישיר או עקיף ללקוח שלך?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
+            type: 'yes-no',
+            nextYes: 'damage-probability',
+            nextNo: 'general-questions'
+        },
+        'damage-probability': {
+            id: 'damage-probability',
+            section: 'נותן שירות',
+            text: 'האם הסבירות שדבר כזה אכן התרחש היא סבירה או סבירה מאוד?',
+            comment: 'אם הסבירות נמוכה אינך חייב לשלם. אלא אם כן רצונך לצאת מידי כל ספק',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
+            type: 'single-choice',
+            type: 'yes-no',
+            nextYes: 'damage-scope',
+            nextNo: 'general-questions'
+        },
+        'damage-scope': {
+            id: 'damage-scope',
+            section: 'נותן שירות',
+            text: 'מה עלול להיות היקף נזק כזה לדעתך?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
+            type: 'single-choice',
+            options: [
+                { value: 550, text: 'בין 100 ש"ח ל-1,000 ש"ח', icon: '' },
+                { value: 5500, text: 'בין 1,000 ש"ח ל-10,000 ש"ח', icon: '' },
+                { value: 55000, text: 'בין 10,000 ש"ח ל–100,000 ש"ח', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '', placeholder: 'הכנס טווח סכומים (בין____ ל-______)' }
+            ],
+            next: 'damage-frequency'
+        },
+        'damage-frequency': {
+            id: 'damage-frequency',
+            section: 'נותן שירות',
+            text: 'כמה פעמים לדעתך, סביר שדבר כזה התרחש בשנה החולפת?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
+            type: 'single-choice',
+            options: [
+                { value: 1, text: 'פעם אחת', icon: '' },
+                { value: 2, text: 'פעמיים', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
+            ],
+            calculation: 'service-provider-calculation',
+            next: 'general-questions'
+        }
+    },
+
+    // Product seller path
+    'product-seller': {
+        'products-sold-annually': {
+            id: 'products-sold-annually',
+            section: 'מוכר מוצרים',
+            text: 'כמה מוצרים (משוער) הנך מוכר בשנה (ליהודים בלבד)?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/retailer.png',
+            type: 'single-choice',
+            options: [
+                { value: 100, text: '100', icon: '' },
+                { value: 500, text: '500', icon: '' },
+                { value: 1000, text: '1,000', icon: '' },
+                { value: 10000, text: '10,000', icon: '' },
+                { value: 100000, text: '100,000', icon: '' },
+                { value: 500000, text: '500,000', icon: '' },
+                { value: 1000000, text: '1,000,000', icon: '' },
+                { value: 2000000, text: '2,000,000', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
+            ],
+            next: 'defective-products'
+        },
+        'defective-products': {
+            id: 'defective-products',
+            section: 'מוכר מוצרים',
+            text: 'האם יתכן שהמוצר שמכרת היה במקרים נדירים: מקולקל / תקול / לא תואם לתקן / לא תואם לכמות?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/retailer.png',
+            type: 'yes-no',
+            nextYes: 'average-product-price',
+            nextNo: 'general-questions'
+        },
+        'average-product-price': {
+            id: 'average-product-price',
+            section: 'מוכר מוצרים',
+            text: 'מהו המחיר הממוצע למוצר בעסק שברשותך?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/retailer.png',
+            type: 'single-choice',
+            options: [
+                { value: 100, text: '100', icon: '' },
+                { value: 500, text: '500', icon: '' },
+                { value: 1000, text: '1,000', icon: '' },
+                { value: 5000, text: '5,000', icon: '' },
+                { value: 10000, text: '10,000', icon: '' },
+                { value: 100000, text: '100,000', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
+            ],
+            next: 'defective-percentage'
+        },
+        'defective-percentage': {
+            id: 'defective-percentage',
+            section: 'מוכר מוצרים',
+            text: 'כמה אחוז מהמוצרים יתכן שהיו תקולים?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/retailer.png',
+            type: 'single-choice',
+            options: [
+                { value: 5, text: '5%', icon: '' },
+                { value: 10, text: '10%', icon: '' },
+                { value: 15, text: '15%', icon: '' },
+                { value: 20, text: '20%', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
+            ],
+            calculation: 'product-seller-calculation',
+            next: 'general-questions'
+        }
+    },
+
+    // Broker path
+    'broker': {
+        'transactions-per-year': {
+            id: 'transactions-per-year',
+            section: 'עסקי תיווך',
+            text: 'מה מספר העסקאות בממוצע שהנך מבצע בשנה?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
+            type: 'single-choice',
+            options: [
+                { value: 5, text: '5', icon: '' },
+                { value: 10, text: '10', icon: '' },
+                { value: 20, text: '20', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
+            ],
+            next: 'unfair-payment-concern'
+        },
+        'unfair-payment-concern': {
+            id: 'unfair-payment-concern',
+            section: 'עסקי תיווך',
+            text: 'האם הנך חושש שבחלק מהעסקאות גבית מהלקוח תשלום לא מספיק הגון?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
+            type: 'yes-no',
+            nextYes: 'unfair-payment-frequency',
+            nextNo: 'misleading-info-concern'
+        },
+        'unfair-payment-frequency': {
+            id: 'unfair-payment-frequency',
+            section: 'עסקי תיווך',
+            text: 'כמה פעמים בשנה הנך חושש דבר כזה אירע?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
+            type: 'single-choice',
+            options: [
+                { value: 1, text: 'פעם אחת', icon: '' },
+                { value: 2, text: 'פעמיים', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
+            ],
+            next: 'unfair-amount'
+        },
+        'unfair-amount': {
+            id: 'unfair-amount',
+            section: 'עסקי תיווך',
+            text: 'באיזה סכום הנך מעריך את הסכום הלא הגון מספיק שגבית בכל מקרה כזה?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
+            type: 'single-choice',
+            options: [
+                { value: 1000, text: '1,000 ש"ח', icon: '' },
+                { value: 5000, text: '5,000 ש"ח', icon: '' },
+                { value: 10000, text: '10,000 ש"ח', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
+            ],
+            calculation: 'multiply-previous',
+            next: 'misleading-info-concern'
+        },
+        'misleading-info-concern': {
+            id: 'misleading-info-concern',
+            section: 'עסקי תיווך',
+            text: 'האם הנך חושש שבחלק מהעסקאות גרמת ללקוח לרכוש נכס לא מספיק טוב ונכון עבורו (באמצעות נתונים לא מדויקים או העלמה מכוונת של נתונים חיוניים)?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
+            type: 'yes-no',
+            nextYes: 'misleading-frequency',
+            nextNo: 'general-questions'
+        },
+        'misleading-frequency': {
+            id: 'misleading-frequency',
+            section: 'עסקי תיווך',
+            text: 'כמה פעמים בשנה הנך חושש דבר כזה אירע?',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
+            type: 'single-choice',
+            options: [
+                { value: 1, text: 'פעם אחת', icon: '' },
+                { value: 2, text: 'פעמיים', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
+            ],
+            next: 'misleading-damage-scope'
+        },
+        'misleading-damage-scope': {
+            id: 'misleading-damage-scope',
+            section: 'עסקי תיווך',
+            text: 'נסה להעריך את ההיקף של נזק כזה עבור הלקוח:',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
+            type: 'single-choice',
+            options: [
+                { value: 10000, text: '10,000 ש"ח', icon: '' },
+                { value: 50000, text: '50,000 ש"ח', icon: '' },
+                { value: 100000, text: '100,000 ש"ח', icon: '' },
+                { value: 'custom', text: 'אחר', icon: '' }
+            ],
+            calculation: 'multiply-previous',
             next: 'general-questions'
         }
     },

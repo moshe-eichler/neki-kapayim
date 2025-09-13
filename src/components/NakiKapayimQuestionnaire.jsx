@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { questionsConfig } from './questionsConfig';
 import backgroundImg from '../static/background.jpg';
 import logoImg from '../static/logo.png';
@@ -52,6 +52,8 @@ const NakiKapayimQuestionnaire = () => {
         case 'multiply-previous':
           let frequency = previousAnswers['error-frequency'] ||
                          previousAnswers['faithfulness-damage-amount'] ||
+                         previousAnswers['unfair-payment-frequency'] ||
+                         previousAnswers['misleading-frequency'] ||
                          previousAnswers['family-expenses-times'] || 1;
 
           let amount = typeof answer === 'number' ? answer : 0;
@@ -85,6 +87,25 @@ const NakiKapayimQuestionnaire = () => {
       
         case 'option-value':
           return typeof answer === 'number' ? answer : 0;
+
+        case 'service-provider-calculation':
+          // Inferring based on path: clients * (defPerc/100) * avg * (actDef/100) * freq
+          // Plus damage if applicable: but for now, base on deficiency; damage might be separate
+          const clients = previousAnswers['business-clients-count'] || 0;
+          const defPerc = previousAnswers['service-deficiency-percentage'] || 0;
+          const avgTransaction = previousAnswers['transaction-average'] || 0;
+          const actDefPerc = previousAnswers['actual-deficiency-percentage'] || 0;
+          const service_freq = typeof answer === 'number' ? answer : 0;
+          // For damage-scope, if present, add midpoint * prob factor * freq, but simplified here
+          const damageScope = previousAnswers['damage-scope'] || 0;
+          const damageFactor = damageScope > 0 ? (damageScope / 2) * service_freq : 0; // Midpoint approximation
+          return Math.round(clients * (defPerc / 100) * avgTransaction * (actDefPerc / 100) * service_freq + damageFactor);
+
+        case 'product-seller-calculation':
+          const productsSold = previousAnswers['products-sold-annually'] || 0;
+          const avgPrice = previousAnswers['average-product-price'] || 0;
+          const defectPerc = previousAnswers['defect-percentage'] || 0;
+          return Math.round(productsSold * (defectPerc / 100) * avgPrice);
       }
     }
   
@@ -210,6 +231,12 @@ const NakiKapayimQuestionnaire = () => {
         nextQuestion = questionData.next;
       }
 
+      // Handle sub-path selection for single-choice (e.g., business-type)
+      if ((!nextQuestion) && questionsConfig[finalAnswer]) {
+        setCurrentPath(finalAnswer);
+        nextQuestion = Object.keys(questionsConfig[finalAnswer])[0];
+      }
+
       // If we're in a path-specific section and the next question is general-questions,
       // move to general questions
       if (nextQuestion === 'general-questions') {
@@ -243,6 +270,12 @@ const NakiKapayimQuestionnaire = () => {
         nextQuestion = questionData.nextNo; // Default to "no" path
       } else {
         nextQuestion = questionData.next;
+      }
+
+      // Handle sub-path skip (default to first sub-option or something, but for simplicity, use next or first
+      if ((!nextQuestion || nextQuestion === '?????') && questionsConfig['service-provider']) { // Example default
+        setCurrentPath('service-provider'); // Default sub-path for skip
+        nextQuestion = Object.keys(questionsConfig['service-provider'])[0];
       }
 
       if (nextQuestion === 'general-questions') {
