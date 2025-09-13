@@ -104,7 +104,8 @@ const NakiKapayimQuestionnaire = () => {
         case 'product-seller-calculation':
           const productsSold = previousAnswers['products-sold-annually'] || 0;
           const avgPrice = previousAnswers['average-product-price'] || 0;
-          const defectPerc = previousAnswers['defect-percentage'] || 0;
+          const defectPerc = previousAnswers['defective-percentage'] || 0;
+          console.log(productsSold, avgPrice, defectPerc);
           return Math.round(productsSold * (defectPerc / 100) * avgPrice);
       }
     }
