@@ -249,7 +249,7 @@ export const questionsConfig = {
             id: 'business-type',
             section: 'בעל עסק',
             text: 'איזה סוג עסק נמצא בבעלותך?',
-            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/business.png',
+            icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/open.png',
             type: 'single-choice',
             options: [
                 { value: 'service-provider', text: 'נותן שירות', icon: '' },
