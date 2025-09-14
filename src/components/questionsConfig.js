@@ -5,6 +5,7 @@ export const questionsConfig = {
     // Initial occupation question
     'occupation': {
         id: 'occupation',
+        questionNumber: 1,
         text: 'במה אני עוסק',
         icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/occupation.png',
         type: 'single-choice',
@@ -19,6 +20,7 @@ export const questionsConfig = {
     'tent-dweller': {
         scholarship: {
             id: 'scholarship',
+            questionNumber: 2,
             section: 'יושב אוהל',
             text: 'האם הינך מקבל מילגת כולל?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/book.png',
@@ -30,6 +32,7 @@ export const questionsConfig = {
         },
         'scholarship-hours': {
             id: 'scholarship-hours',
+            questionNumber: 3,
             section: 'יושב אוהל',
             text: 'האם גובה המילגה מותנה בשמירת הזמנים?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/book.png',
@@ -41,6 +44,7 @@ export const questionsConfig = {
         },
         'scholarship-accuracy': {
             id: 'scholarship-accuracy',
+            questionNumber: 4,
             section: 'יושב אוהל',
             text: 'האם יתכן שלא מילאת באופן מדויק את רישום הזמנים וקיבלת בגין כך מילגה מוגדלת?',
             comment: 'ניתן לשער ששיעור הטעות החודשי אינו עולה על 20 ש״ח',
@@ -58,6 +62,7 @@ export const questionsConfig = {
     'employee': {
         'works-with-clients': {
             id: 'works-with-clients',
+            questionNumber: 2,
             section: 'שכיר',
             text: 'האם הנך עובד מול לקוחות?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -69,6 +74,7 @@ export const questionsConfig = {
         },
         'client-errors': {
             id: 'client-errors',
+            questionNumber: 3,
             section: 'שכיר',
             text: 'האם יתכן שטעות שלך גרמה ללקוח לשלם יותר או לקבל פחות?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -80,6 +86,7 @@ export const questionsConfig = {
         },
         'error-frequency': {
             id: 'error-frequency',
+            questionNumber: 4,
             section: 'שכיר',
             text: 'אחת לכמה זמן היה הדבר הזה עלול לקרות בשנה החולפת?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -97,6 +104,7 @@ export const questionsConfig = {
         },
         'damage-amount': {
             id: 'damage-amount',
+            questionNumber: 5,
             section: 'שכיר',
             text: 'בכמה הינך משער את היקף הנזק ללקוח באם הדבר אכן קרה?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -116,6 +124,7 @@ export const questionsConfig = {
         },
         'hourly-work': {
             id: 'hourly-work',
+            questionNumber: 6,
             section: 'שכיר',
             text: 'האם הנך עובד לפי שעות, או מחוייב לסך שעות?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -127,6 +136,7 @@ export const questionsConfig = {
         },
         'time-accuracy': {
             id: 'time-accuracy',
+            questionNumber: 7,
             section: 'שכיר',
             text: 'האם רישום השעות שלך מדויק?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -138,6 +148,7 @@ export const questionsConfig = {
         },
         'time-inaccuracy-damage': {
             id: 'time-inaccuracy-damage',
+            questionNumber: 8,
             section: 'שכיר',
             text: 'האם יתכן שחוסר הדיוק שלך גרם בלא יודעין לנזק למעסיק?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -149,6 +160,7 @@ export const questionsConfig = {
         },
         'inaccuracy-percentage': {
             id: 'inaccuracy-percentage',
+            questionNumber: 9,
             section: 'שכיר',
             text: 'כמה אחוזים מרישום הזמן שלך סובל מחוסר דיוק?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -163,6 +175,7 @@ export const questionsConfig = {
         },
         'single-inaccuracy-cost': {
             id: 'single-inaccuracy-cost',
+            questionNumber: 10,
             section: 'שכיר',
             text: 'בכמה הנך מעריך את משמעות מקרה של אי-דיוק בודד עבור המעסיק שלך?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -177,6 +190,7 @@ export const questionsConfig = {
         },
         'time-registration-frequency': {
             id: 'time-registration-frequency',
+            questionNumber: 11,
             section: 'שכיר',
             text: 'באיזו תדירות הנך אמור לבצע רישום זמן?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -192,6 +206,7 @@ export const questionsConfig = {
         },
         'work-faithfulness': {
             id: 'work-faithfulness',
+            questionNumber: 12,
             section: 'שכיר',
             text: 'האם זכור לך מקרה בו לא מילאת את תפקידך באמונה ונגרם נזק או מניעת רווח למעסיק שלך?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -203,6 +218,7 @@ export const questionsConfig = {
         },
         'faithfulness-damage-amount': {
             id: 'faithfulness-damage-amount',
+            questionNumber: 13,
             section: 'שכיר',
             text: 'בכמה כסף הנך מעריך את משמעות הנזק עבור המעסיק?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -218,6 +234,7 @@ export const questionsConfig = {
         },
         'faithfulness-frequency': {
             id: 'faithfulness-frequency',
+            questionNumber: 14,
             section: 'שכיר',
             text: 'האם אתה חושש שהדבר אירע יותר מפעם אחת בשנה?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -229,6 +246,7 @@ export const questionsConfig = {
         },
         'faithfulness-times-per-year': {
             id: 'faithfulness-times-per-year',
+            questionNumber: 15,
             section: 'שכיר',
             text: 'כמה פעמים בשנה הנך חושש שהדבר קרה?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/suitcase.png',
@@ -247,6 +265,7 @@ export const questionsConfig = {
     'business-owner': {
         'business-type': {
             id: 'business-type',
+            questionNumber: 2,
             section: 'בעל עסק',
             text: 'איזה סוג עסק נמצא בבעלותך?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/open.png',
@@ -263,6 +282,7 @@ export const questionsConfig = {
     'service-provider': {
         'business-clients-count': {
             id: 'business-clients-count',
+            questionNumber: 3,
             section: 'נותן שירות',
             text: 'עם כמה לקוחות הנך עובד בשנה?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
@@ -278,6 +298,7 @@ export const questionsConfig = {
         },
         'service-quality': {
             id: 'service-quality',
+            questionNumber: 4,
             section: 'נותן שירות',
             text: 'הלקוחות משלמים לך מחיר מלא תמורת קבלת שירות מלא. האם יתכן שלא כל הלקוחות שלך קיבלו מצדך את מלוא השירות (מבחינת זמן, איכות, זמינות)?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
@@ -287,6 +308,7 @@ export const questionsConfig = {
         },
         'service-deficiency-percentage': {
             id: 'service-deficiency-percentage',
+            questionNumber: 5,
             section: 'נותן שירות',
             text: 'כמה אחוזים מלקוחותיך (יהודים בלבד) לא קיבלו לדעתך את מלוא השירות?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
@@ -302,6 +324,7 @@ export const questionsConfig = {
         },
         'transaction-average': {
             id: 'transaction-average',
+            questionNumber: 6,
             section: 'נותן שירות',
             text: 'מהו ממוצע העסקה שבינך לבין לקוחותיך?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
@@ -322,6 +345,7 @@ export const questionsConfig = {
         },
         'actual-deficiency-percentage': {
             id: 'actual-deficiency-percentage',
+            questionNumber: 7,
             section: 'נותן שירות',
             text: 'בכמה אחוזי ליקוי מדובר?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
@@ -338,6 +362,7 @@ export const questionsConfig = {
         },
         'service-damage-potential': {
             id: 'service-damage-potential',
+            questionNumber: 8,
             section: 'נותן שירות',
             text: 'האם יתכן שבעקבות שירות לקוי שהענקת נגרם נזק ישיר או עקיף ללקוח שלך?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
@@ -347,17 +372,18 @@ export const questionsConfig = {
         },
         'damage-probability': {
             id: 'damage-probability',
+            questionNumber: 9,
             section: 'נותן שירות',
             text: 'האם הסבירות שדבר כזה אכן התרחש היא סבירה או סבירה מאוד?',
             comment: 'אם הסבירות נמוכה אינך חייב לשלם. אלא אם כן רצונך לצאת מידי כל ספק',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
-            type: 'single-choice',
             type: 'yes-no',
             nextYes: 'damage-scope',
             nextNo: 'general-questions'
         },
         'damage-scope': {
             id: 'damage-scope',
+            questionNumber: 10,
             section: 'נותן שירות',
             text: 'מה עלול להיות היקף נזק כזה לדעתך?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
@@ -372,6 +398,7 @@ export const questionsConfig = {
         },
         'damage-frequency': {
             id: 'damage-frequency',
+            questionNumber: 11,
             section: 'נותן שירות',
             text: 'כמה פעמים לדעתך, סביר שדבר כזה התרחש בשנה החולפת?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/handyman.png',
@@ -390,6 +417,7 @@ export const questionsConfig = {
     'product-seller': {
         'products-sold-annually': {
             id: 'products-sold-annually',
+            questionNumber: 3,
             section: 'מוכר מוצרים',
             text: 'כמה מוצרים (משוער) הנך מוכר בשנה (ליהודים בלבד)?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/retailer.png',
@@ -409,6 +437,7 @@ export const questionsConfig = {
         },
         'defective-products': {
             id: 'defective-products',
+            questionNumber: 4,
             section: 'מוכר מוצרים',
             text: 'האם יתכן שהמוצר שמכרת היה במקרים נדירים: מקולקל / תקול / לא תואם לתקן / לא תואם לכמות?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/retailer.png',
@@ -418,6 +447,7 @@ export const questionsConfig = {
         },
         'average-product-price': {
             id: 'average-product-price',
+            questionNumber: 5,
             section: 'מוכר מוצרים',
             text: 'מהו המחיר הממוצע למוצר בעסק שברשותך?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/retailer.png',
@@ -435,6 +465,7 @@ export const questionsConfig = {
         },
         'defective-percentage': {
             id: 'defective-percentage',
+            questionNumber: 6,
             section: 'מוכר מוצרים',
             text: 'כמה אחוז מהמוצרים יתכן שהיו תקולים?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/retailer.png',
@@ -455,6 +486,7 @@ export const questionsConfig = {
     'broker': {
         'transactions-per-year': {
             id: 'transactions-per-year',
+            questionNumber: 3,
             section: 'עסקי תיווך',
             text: 'מה מספר העסקאות בממוצע שהנך מבצע בשנה?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
@@ -469,6 +501,7 @@ export const questionsConfig = {
         },
         'unfair-payment-concern': {
             id: 'unfair-payment-concern',
+            questionNumber: 4,
             section: 'עסקי תיווך',
             text: 'האם הנך חושש שבחלק מהעסקאות גבית מהלקוח תשלום לא מספיק הגון?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
@@ -478,6 +511,7 @@ export const questionsConfig = {
         },
         'unfair-payment-frequency': {
             id: 'unfair-payment-frequency',
+            questionNumber: 5,
             section: 'עסקי תיווך',
             text: 'כמה פעמים בשנה הנך חושש דבר כזה אירע?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
@@ -491,6 +525,7 @@ export const questionsConfig = {
         },
         'unfair-amount': {
             id: 'unfair-amount',
+            questionNumber: 6,
             section: 'עסקי תיווך',
             text: 'באיזה סכום הנך מעריך את הסכום הלא הגון מספיק שגבית בכל מקרה כזה?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
@@ -506,6 +541,7 @@ export const questionsConfig = {
         },
         'misleading-info-concern': {
             id: 'misleading-info-concern',
+            questionNumber: 7,
             section: 'עסקי תיווך',
             text: 'האם הנך חושש שבחלק מהעסקאות גרמת ללקוח לרכוש נכס לא מספיק טוב ונכון עבורו (באמצעות נתונים לא מדויקים או העלמה מכוונת של נתונים חיוניים)?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
@@ -515,6 +551,7 @@ export const questionsConfig = {
         },
         'misleading-frequency': {
             id: 'misleading-frequency',
+            questionNumber: 8,
             section: 'עסקי תיווך',
             text: 'כמה פעמים בשנה הנך חושש דבר כזה אירע?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
@@ -528,6 +565,7 @@ export const questionsConfig = {
         },
         'misleading-damage-scope': {
             id: 'misleading-damage-scope',
+            questionNumber: 9,
             section: 'עסקי תיווך',
             text: 'נסה להעריך את ההיקף של נזק כזה עבור הלקוח:',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/broker.png',
@@ -547,6 +585,7 @@ export const questionsConfig = {
     'general-questions': {
         'small-loans': {
             id: 'small-loans',
+            questionNumber: 16,
             section: 'הלוואות קטנות',
             text: 'האם הנך לווה לפעמים סכומים קטנים מחבר, שכן, או קרוב משפחה?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/money.png',
@@ -558,6 +597,7 @@ export const questionsConfig = {
         },
         'loan-amount': {
             id: 'loan-amount',
+            questionNumber: 17,
             section: 'הלוואות קטנות',
             text: 'איזה סכום קטן אתה עשוי ללוות לפעמים?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/money.png',
@@ -571,6 +611,7 @@ export const questionsConfig = {
         },
         'loan-frequency': {
             id: 'loan-frequency',
+            questionNumber: 18,
             section: 'הלוואות קטנות',
             text: 'באיזו תדירות זה יכול לקרות?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/money.png',
@@ -586,6 +627,7 @@ export const questionsConfig = {
         },
         'loan-recording': {
             id: 'loan-recording',
+            questionNumber: 19,
             section: 'הלוואות קטנות',
             text: 'האם הנך נוהג לרשום את ההלוואות האלו בפנקס?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/money.png',
@@ -597,6 +639,7 @@ export const questionsConfig = {
         },
         'loan-return-certainty': {
             id: 'loan-return-certainty',
+            questionNumber: 20,
             section: 'הלוואות קטנות',
             text: 'האם אתה בטוח ב-100% שבכל הפעמים שלווית זכרת להחזיר?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/money.png',
@@ -607,11 +650,9 @@ export const questionsConfig = {
             nextNo: 'loan-guy',
             calculation: 'loan-calculation' // (amount * frequency) / 3
         },
-
-
-
         'loan-guy': {
             id: 'loan-guy',
+            questionNumber: 21,
             section: 'הלוואות קטנות',
             text: 'האם הנך חושש שבימי בחרותך התחייבת כסף לחבר ולא זכרת או לא היה לך לשלם?',
             comment: 'סביר להניח שמדובר בסכום שאינו עולה על 100 ש"ח',
@@ -623,9 +664,9 @@ export const questionsConfig = {
             nextNo: 'excess-return',
             amount: 100
         },
-
         'excess-return': {
             id: 'excess-return',
+            questionNumber: 22,
             section: 'הלוואות קטנות',
             text: 'האם הנך חושש שקיבלת פעם סכום "עגול" שהיית אמור להחזיר ממנו עודךף "בהזדמנות" ושכחת?',
             comment: 'יש להניח שסכום ה"עיגול" אינו עולה על 20 ש"ח',
@@ -640,6 +681,7 @@ export const questionsConfig = {
 
         'neighbors': {
             id: 'neighbors',
+            questionNumber: 23,
             section: 'השאלה משכנים',
             text: 'האם אתה גר בבית משותף?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbors.png',
@@ -651,6 +693,7 @@ export const questionsConfig = {
         },
         'neighbor-borrowing': {
             id: 'neighbor-borrowing',
+            questionNumber: 24,
             section: 'השאלה משכנים',
             text: 'האם אתה או ילדיך נוהגים ללוות מוצרים משכנים במידת הצורך?',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbors.png',
@@ -662,6 +705,7 @@ export const questionsConfig = {
         },
         'neighbor-frequency': {
             id: 'neighbor-frequency',
+            questionNumber: 25,
             text: 'באיזו תדירות זה יכול לקרות?',
             section: 'הלוואה משכנים',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbors.png',
@@ -678,6 +722,7 @@ export const questionsConfig = {
         },
         'neighbor-recording': {
             id: 'neighbor-recording',
+            questionNumber: 26,
             text: 'האם הנך נוהג לרשום הלוואות אלו?',
             section: 'הלוואה משכנים',
             comment: 'יש להניח שכשליש מהפעמים לא החזרת. יש להעריך שווי ממוצע של מוצר הנלווה משכנים בכ-10 ש"ח',
@@ -691,6 +736,7 @@ export const questionsConfig = {
         },
         'neighbors-damage': {
             id: 'neighbors-damage',
+            questionNumber: 27,
             text: 'האם ילדיך הקטנים מורידים לפעמים את פח האשפה?',
             section: 'נזקי שכנים',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbor.png',
@@ -702,6 +748,7 @@ export const questionsConfig = {
         },
         'neighbors-damage-amount': {
             id: 'neighbors-damage-amount',
+            questionNumber: 28,
             text: 'האם יתכן שחלק מהאשפה נפל בדרך וגרם נזק לשכן?',
             section: 'נזקי שכנים',
             comment: 'סביר שהדבר אירע כ-3 פעמים יש להעריך הנזק לכל פעם בכ-10 ש"ח',
@@ -715,6 +762,7 @@ export const questionsConfig = {
         },
         'neighbors-renovations': {
             id: 'neighbors-renovations',
+            questionNumber: 29,
             text: 'האם ערכת שיפוצים בשנה החולפת?',
             section: 'נזקי שכנים',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/neighbor.png',
@@ -726,6 +774,7 @@ export const questionsConfig = {
         },
         'neighbors-renovations-sum': {
             id: 'neighbors-renovations-sum',
+            questionNumber: 30,
             text: 'האם יתכן כי במסגרת השיפוצים נגרם נזק לכביסה של שכניך או לרכוש המשתוף?',
             section: 'נזקי שכנים',
             comment: 'נזק לרכוש המשותף במסגרת בנייה עשוי להסתכם בכ-500 ש"ח',
@@ -740,6 +789,7 @@ export const questionsConfig = {
 
         'mikveh': {
             id: 'mikveh',
+            questionNumber: 31,
             text: 'האם אתה נוהג לטבול במקווה?',
             section: 'מקווה',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/mikveh.png',
@@ -751,6 +801,7 @@ export const questionsConfig = {
         },
         'mikveh-payment': {
             id: 'mikveh-payment',
+            questionNumber: 32,
             text: 'האם סביר שאתה נכנס לפעמים בלי לשלם? (כי אין לך כסף או שנגמרו הפעימות)',
             section: 'מקווה',
             comment: 'התשלום הממוצע לטבילה במקווה - בשקלול ערבי שבת וחג - הינו 7 ש"ח יש להעריך שסך הפעמים שהנך נכנס ללא תשלום אינו עולה על 10',
@@ -764,6 +815,7 @@ export const questionsConfig = {
         },
         'mikveh-shabbat': {
             id: 'mikveh-shabbat',
+            questionNumber: 33,
             text: 'האם נכנסת בשבת למקווה במקום זר ולא שילמת אחרי שבת?',
             section: 'מקווה',
             comment: 'סביר שהדבר לא התרחש יותר מפעם אחת בשנה',
@@ -777,6 +829,7 @@ export const questionsConfig = {
         },
         'mikveh-clothes': {
             id: 'mikveh-clothes',
+            questionNumber: 34,
             text: 'האם יתכן שלקחת בטעות כביסה של מישהו אחר?',
             section: 'מקווה',
             comment: 'יש להעריך שווי שקית כביסה (לא חדשה) בכ-50 ש"ח',
@@ -791,6 +844,7 @@ export const questionsConfig = {
 
         'smoking': {
             id: 'smoking',
+            questionNumber: 35,
             text: 'האם אתה מעשן?',
             section: 'נזקי עישון',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/smoking.png',
@@ -802,6 +856,7 @@ export const questionsConfig = {
         },
         'cigarette-requests': {
             id: 'cigarette-requests',
+            questionNumber: 36,
             text: 'האם הנך מבקש לפעמים סיגריות מאחרים?',
             section: 'נזקי עישון',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/smoking.png',
@@ -815,6 +870,7 @@ export const questionsConfig = {
 
         'car-ownership': {
             id: 'car-ownership',
+            questionNumber: 37,
             text: 'האם הנך בעל רכב?',
             section: 'נזקי רכב',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/car.png',
@@ -826,6 +882,7 @@ export const questionsConfig = {
         },
         'car-damage': {
             id: 'car-damage',
+            questionNumber: 38,
             text: 'האם אירע לך פעם שפגעת ברכב חונה ולא שילמת?',
             section: 'נזקי רכב',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/car.png',
@@ -838,6 +895,7 @@ export const questionsConfig = {
         },
         'parking-damage': {
             id: 'parking-damage',
+            questionNumber: 39,
             text: 'האם יתכן שלקחת חניה של מישהו וגרמת לו נזק או עיכוב?',
             section: 'נזקי רכב',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/car.png',
@@ -850,6 +908,7 @@ export const questionsConfig = {
         },
         'mud-splashing': {
             id: 'mud-splashing',
+            questionNumber: 40,
             text: 'האם יתכן שבנסיעה בימות הגשמים התזת מים ובוץ על עוברי אורח והיזקת למלבושיהם?',
             section: 'נזקי רכב',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/car.png',
@@ -863,6 +922,7 @@ export const questionsConfig = {
 
         'taxi': {
             id: 'taxi',
+            questionNumber: 41,
             text: 'האם אירע שהזמנת מונית ונסעת במונית אחרת - או שהחלטת ללכת ברגל - מבלי לבטל את המונית שהזמנת?',
             comment: 'יש להעריך את הנזק לנהג המונית בכ-20 ש"ח',
             section: 'כללי',
@@ -876,6 +936,7 @@ export const questionsConfig = {
         },
         'elevator': {
             id: 'elevator',
+            questionNumber: 42,
             text: 'האם יתכן שקיצרת דרכך באמצעות מעבר בבנין מגורים אחר ושימוש במעלית?',
             comment: 'יש להעריך את עלות השימוש במעליות שלא כדין בכ-5 ש"ח',
             section: 'כללי',
@@ -889,6 +950,7 @@ export const questionsConfig = {
         },
         'grocery': {
             id: 'grocery',
+            questionNumber: 43,
             text: 'האם יתכן שביצעת רכישה במכולת ושכחת לשלם על אחד המוצרים?',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
@@ -901,6 +963,7 @@ export const questionsConfig = {
         },
         'family-damage': {
             id: 'family-damage',
+            questionNumber: 44,
             text: 'האם יתכן שאחד מילדיך ביצע נזק לרכוש כלשהו ולא סיפר לך?',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
@@ -913,6 +976,7 @@ export const questionsConfig = {
         },
         'forgotten-item': {
             id: 'forgotten-item',
+            questionNumber: 45,
             text: 'האם יתכן שמישהו מסר לך חפץ למסור למישהו והחפץ נשכח אצלך?',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
@@ -924,6 +988,7 @@ export const questionsConfig = {
         },
         'transportation': {
             id: 'transportation',
+            questionNumber: 46,
             text: 'האם יתכן שמישהו מבני משפחתך נסע בתחבורה ציבורית ולא שילם? (כיוון שהרב-קו לא היה אצלו)',
             comment: 'יש להעריך שווי ממוצע לנסיעה בכ-5 ש"ח',
             section: 'כללי',
@@ -936,6 +1001,7 @@ export const questionsConfig = {
         },
         'transportation-frequency': {
             id: 'transportation',
+            questionNumber: 47,
             text: 'באיזו תדירות עלול הדבר להתרחש? (5 ש"ח על כל פעם)',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
@@ -955,6 +1021,7 @@ export const questionsConfig = {
         },
         'books-possession': {
             id: 'books-possession',
+            questionNumber: 48,
             text: 'האם קיימים תחת ידך ספרים שאינם שלך ואינך יודע מי בעליהם?',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
@@ -966,6 +1033,7 @@ export const questionsConfig = {
         },
         'books-count': {
             id: 'books-count',
+            questionNumber: 49,
             text: 'בכמה ספרים מדובר? (15 ש"ח לספר)',
             comment: 'ניתן לשער שווי ממוצע של ספר (לא חדש) בכ-15 ש"ח',
             section: 'כללי',
@@ -981,6 +1049,7 @@ export const questionsConfig = {
         },
         'forgotten-debt': {
             id: 'forgotten-debt',
+            questionNumber: 50,
             text: 'האם זכור לך שביקשת לפרוע חוב או להחזיר חפץ כלשהו ולא הצלחת לאתר את הבעלים? (50 ש"ח)',
             comment: 'בהיעדר נתונים ניתן להניח כי מדובר בכ-50 ש"ח',
             section: 'כללי',
@@ -994,6 +1063,7 @@ export const questionsConfig = {
         },
         'kids-reading': {
             id: 'kids-reading',
+            questionNumber: 51,
             text: 'האם יתכן שילדיך נוהגים לקרוא בקביעות בספרי קומיקס בחנות ספרים? (100 ש"ח)',
             comment: 'יש לשער את הנזק הנגרם לספרים שאינם ראויים עוד למכירה בכ-100 ש"ח',
             section: 'כללי',
@@ -1007,6 +1077,7 @@ export const questionsConfig = {
         },
         'charity-money': {
             id: 'charity-money',
+            questionNumber: 52,
             text: 'האם אי פעם נשארו בידיך כספי צדקה ולא ידעת למי להעבירם?',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
@@ -1018,6 +1089,7 @@ export const questionsConfig = {
         },
         'charity-amount': {
             id: 'charity-amount',
+            questionNumber: 53,
             text: 'באיזה סכום מדובר?',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
@@ -1032,6 +1104,7 @@ export const questionsConfig = {
         },
         'service': {
             id: 'service',
+            questionNumber: 54,
             text: 'האם יתכן כי הזמנת תור לרופא / איש מקצוע / נותן שירות, ולא הופעת, מבלי להודיע מראש?',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
@@ -1044,6 +1117,7 @@ export const questionsConfig = {
         },
         'family-expenses': {
             id: 'family-expenses',
+            questionNumber: 55,
             text: 'במשפחות רבות נהוג לערוך שמחות / נסיעות / טיולים / לרכוש מתנות, במשותף, כאשר לאחר מכן עורכים חשבון כמה כל אחד נתן, והאם הוא צריך להוסיף או שמגיע לו בחזרה. האם הנך חושש שבמסגרת חשבונות אלו טעית על חשבון בני המשפחה?',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
@@ -1053,6 +1127,7 @@ export const questionsConfig = {
         },
         'family-expenses-amount': {
             id: 'family-expenses-amount',
+            questionNumber: 56,
             text: 'בכמה הנך מעריך טעות כזו?',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
@@ -1067,6 +1142,7 @@ export const questionsConfig = {
         },
         'family-expenses-frequency': {
             id: 'family-expenses-frequency',
+            questionNumber: 57,
             text: 'האם הנך חושש שטעות כזו אירעה לך יותר מפעם אחת השנה?',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',
@@ -1076,6 +1152,7 @@ export const questionsConfig = {
         },
         'family-expenses-times': {
             id: 'family-expenses-times',
+            questionNumber: 58,
             text: 'כמה פעמים לדעתך זה עלול היה לקרות השנה?',
             section: 'כללי',
             icon: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/general.png',

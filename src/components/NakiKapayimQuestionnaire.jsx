@@ -14,6 +14,7 @@ const NakiKapayimQuestionnaire = () => {
   const [customInput, setCustomInput] = useState('');
   const [showCustomInput, setShowCustomInput] = useState(false);
   const [customPlaceholder, setCustomPlaceholder] = useState('הכנס מספר...');
+  const [totalQuestions, setTotalQuestions] = useState(58); // Default to max (employee path)
 
   const getCurrentQuestionData = () => {
     if (currentQuestion === 'occupation') {
@@ -72,19 +73,21 @@ const NakiKapayimQuestionnaire = () => {
             const loanFreq = previousAnswers['loan-frequency'] || 0;
             return Math.round((loanAmount * loanFreq) / 3);
           }
+          break;
 
         case 'neighbor-calculation':
           if (answer === 'no') {
             const neighborFreq = previousAnswers['neighbor-frequency'] || 0;
             return Math.round((neighborFreq * 10) / 3);
           }
+          break;
 
         case 'complex-time-calculation':
           const percentage = previousAnswers['inaccuracy-percentage'] || 0;
           const cost = previousAnswers['single-inaccuracy-cost'] || 0;
           const freq = typeof answer === 'number' ? answer : 0;
           return Math.round((percentage / 100) * cost * freq * 12); // Monthly calculation
-      
+
         case 'option-value':
           return typeof answer === 'number' ? answer : 0;
 
@@ -105,11 +108,10 @@ const NakiKapayimQuestionnaire = () => {
           const productsSold = previousAnswers['products-sold-annually'] || 0;
           const avgPrice = previousAnswers['average-product-price'] || 0;
           const defectPerc = previousAnswers['defective-percentage'] || 0;
-          console.log(productsSold, avgPrice, defectPerc);
           return Math.round(productsSold * (defectPerc / 100) * avgPrice);
       }
     }
-  
+
     return 0;
   };
 
@@ -170,7 +172,7 @@ const NakiKapayimQuestionnaire = () => {
   const handleCustomInputSubmit = () => {
     if (customInput <= 0) {
       alert("המספר חייב להיות גדול מ 0");
-      return
+      return;
     }
     if (customInput.trim()) {
       handleAnswer('custom');
@@ -227,6 +229,12 @@ const NakiKapayimQuestionnaire = () => {
 
     if (currentQuestion === 'occupation') {
       setCurrentPath(finalAnswer);
+      const pathTotals = {
+        'tent-dweller': 47,
+        'employee': 58,
+        'business-owner': 54 // Default for service-provider
+      };
+      setTotalQuestions(pathTotals[finalAnswer] || 54);
       const pathQuestions = questionsConfig[finalAnswer];
       nextQuestion = Object.keys(pathQuestions)[0];
     } else {
@@ -236,9 +244,14 @@ const NakiKapayimQuestionnaire = () => {
         nextQuestion = questionData.next;
       }
 
-      // Handle sub-path selection for single-choice (e.g., business-type)
-      if ((!nextQuestion) && questionsConfig[finalAnswer]) {
+      if (!nextQuestion && questionsConfig[finalAnswer]) {
         setCurrentPath(finalAnswer);
+        const subPathTotals = {
+          'service-provider': 54,
+          'product-seller': 49,
+          'broker': 52
+        };
+        setTotalQuestions(subPathTotals[finalAnswer] || 54);
         nextQuestion = Object.keys(questionsConfig[finalAnswer])[0];
       }
 
@@ -247,6 +260,11 @@ const NakiKapayimQuestionnaire = () => {
       if (nextQuestion === 'general-questions') {
         setCurrentPath('general-questions');
         nextQuestion = 'small-loans';
+        const generalQuestions = questionsConfig['general-questions'];
+        const maxGeneralQuestionNumber = Math.max(
+          ...Object.values(generalQuestions).map(q => q.questionNumber)
+        );
+        setTotalQuestions(maxGeneralQuestionNumber);
       }
 
       // If we've reached the end
@@ -277,11 +295,14 @@ const NakiKapayimQuestionnaire = () => {
         nextQuestion = questionData.next;
       }
 
-      // Handle sub-path skip
-      if ((!nextQuestion) && questionsConfig['general-questions']) {
-        console.log(questionsConfig);
+      if (!nextQuestion && questionsConfig['general-questions']) {
         setCurrentPath('general-questions');
         nextQuestion = 'small-loans';
+        const generalQuestions = questionsConfig['general-questions'];
+        const maxGeneralQuestionNumber = Math.max(
+          ...Object.values(generalQuestions).map(q => q.questionNumber)
+        );
+        setTotalQuestions(maxGeneralQuestionNumber);
       }
 
       if (nextQuestion === 'general-questions') {
@@ -321,6 +342,24 @@ const NakiKapayimQuestionnaire = () => {
     setAnswerDetails(newAnswerDetails);
     setTotalAmount(newTotal);
 
+    // If backing to occupation, reset totalQuestions
+    if (previousQuestion === 'occupation') {
+      setTotalQuestions(58);
+    } else {
+      const prevQuestionData = getCurrentQuestionDataById(previousQuestion);
+      if (prevQuestionData) {
+        const pathMaxNumbers = {
+          'tent-dweller': 47,
+          'employee': 58,
+          'service-provider': 54,
+          'product-seller': 49,
+          'broker': 52,
+          'general-questions': 58
+        };
+        setTotalQuestions(pathMaxNumbers[currentPath] || 58);
+      }
+    }
+
     // Reset custom input state
     setCustomInput('');
     setShowCustomInput(false);
@@ -332,8 +371,15 @@ const NakiKapayimQuestionnaire = () => {
   };
 
   const getProgress = () => {
-    const totalQuestions = 25; // Approximate total questions
-    return Math.min((questionHistory.length / totalQuestions) * 100, 100);
+    if (isComplete) return 100;
+
+    const questionData = getCurrentQuestionData();
+    if (!questionData) return 0;
+
+    const currentQuestionNumber = questionData.questionNumber || 1;
+    if (totalQuestions <= 0) return 0;
+
+    return Math.min((currentQuestionNumber / totalQuestions) * 100, 100);
   };
 
   if (isComplete) {
@@ -555,9 +601,9 @@ const NakiKapayimQuestionnaire = () => {
                 </div>
               )}
 
-              <p className='mt-4'>
-                {questionData.comment}
-              </p>
+              {questionData.comment && (
+                <p className="mt-4 text-gray-600 text-sm">{questionData.comment}</p>
+              )}
             </div>
 
             {/* Navigation Buttons */}
