@@ -168,6 +168,10 @@ const NakiKapayimQuestionnaire = () => {
   };
 
   const handleCustomInputSubmit = () => {
+    if (customInput <= 0) {
+      alert("המספר חייב להיות גדול מ 0");
+      return
+    }
     if (customInput.trim()) {
       handleAnswer('custom');
     }
@@ -273,10 +277,11 @@ const NakiKapayimQuestionnaire = () => {
         nextQuestion = questionData.next;
       }
 
-      // Handle sub-path skip (default to first sub-option or something, but for simplicity, use next or first
-      if ((!nextQuestion || nextQuestion === '?????') && questionsConfig['service-provider']) { // Example default
-        setCurrentPath('service-provider'); // Default sub-path for skip
-        nextQuestion = Object.keys(questionsConfig['service-provider'])[0];
+      // Handle sub-path skip
+      if ((!nextQuestion) && questionsConfig['general-questions']) {
+        console.log(questionsConfig);
+        setCurrentPath('general-questions');
+        nextQuestion = 'small-loans';
       }
 
       if (nextQuestion === 'general-questions') {
@@ -296,10 +301,10 @@ const NakiKapayimQuestionnaire = () => {
 
   const handleBack = () => {
     if (questionHistory.length <= 1) return;
-  
+
     const newHistory = [...questionHistory];
     newHistory.pop(); // Remove current question
-    const previousQuestion = newHistory[newHistory.length - 1];
+    let previousQuestion = newHistory[newHistory.length - 1];
 
     // Remove the answer for the current question and its details
     const newAnswers = { ...answers };
@@ -310,6 +315,8 @@ const NakiKapayimQuestionnaire = () => {
     const newTotal = newAnswerDetails.reduce((sum, detail) => sum + detail.amount, 0);
 
     setQuestionHistory(newHistory);
+    // setCurrentPath('tent-dweller');
+    // previousQuestion = 'scholarship';
     setCurrentQuestion(previousQuestion);
     setAnswerDetails(newAnswerDetails);
     setTotalAmount(newTotal);
@@ -430,7 +437,7 @@ const NakiKapayimQuestionnaire = () => {
             <div className="mb-6">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-sm text-gray-600">התקדמות</span>
-                <span className="text-sm text-gray-600">שאלה {questionHistory.length} מתוך ~25</span>
+                {/* <span className="text-sm text-gray-600">שאלה {questionHistory.length} מתוך ~25</span> */}
                 <span className="text-sm text-center text-gray-600 min-w-[50px]">{Math.round(getProgress())}%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -527,6 +534,7 @@ const NakiKapayimQuestionnaire = () => {
                   <input
                     type="number"
                     value={customInput}
+                    min="1"
                     onChange={(e) => setCustomInput(e.target.value)}
                     placeholder={customPlaceholder}
                     className="flex-1 p-3 border border-gray-300 rounded-lg text-center"
