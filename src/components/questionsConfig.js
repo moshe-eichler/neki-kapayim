@@ -18,7 +18,7 @@ export const questionsConfig = {
 
     // Tent dweller path
     'tent-dweller': {
-        scholarship: {
+        'scholarship': {
             id: 'scholarship',
             questionNumber: 2,
             section: 'יושב אוהל',

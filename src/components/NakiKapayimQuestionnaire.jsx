@@ -9,7 +9,7 @@ const NakiKapayimQuestionnaire = () => {
   const [answers, setAnswers] = useState({});
   const [totalAmount, setTotalAmount] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
-  const [questionHistory, setQuestionHistory] = useState(['occupation']);
+  const [questionHistory, setQuestionHistory] = useState([{ questionId: 'occupation', path: 'occupation' }]);
   const [answerDetails, setAnswerDetails] = useState([]);
   const [customInput, setCustomInput] = useState('');
   const [showCustomInput, setShowCustomInput] = useState(false);
@@ -226,9 +226,11 @@ const NakiKapayimQuestionnaire = () => {
 
     // Determine next question
     let nextQuestion = null;
+    let nextPath = currentPath;
 
     if (currentQuestion === 'occupation') {
       setCurrentPath(finalAnswer);
+      nextPath = finalAnswer;
       const pathTotals = {
         'tent-dweller': 47,
         'employee': 58,
@@ -246,6 +248,7 @@ const NakiKapayimQuestionnaire = () => {
 
       if (!nextQuestion && questionsConfig[finalAnswer]) {
         setCurrentPath(finalAnswer);
+        nextPath = finalAnswer;
         const subPathTotals = {
           'service-provider': 54,
           'product-seller': 49,
@@ -259,6 +262,7 @@ const NakiKapayimQuestionnaire = () => {
       // move to general questions
       if (nextQuestion === 'general-questions') {
         setCurrentPath('general-questions');
+        nextPath = 'general-questions';
         nextQuestion = 'small-loans';
         const generalQuestions = questionsConfig['general-questions'];
         const maxGeneralQuestionNumber = Math.max(
@@ -275,7 +279,7 @@ const NakiKapayimQuestionnaire = () => {
     }
 
     setCurrentQuestion(nextQuestion);
-    setQuestionHistory(prev => [...prev, nextQuestion]);
+    setQuestionHistory(prev => [...prev, { questionId: nextQuestion, path: nextPath }]);
   };
 
   const handleNext = () => {
@@ -284,6 +288,7 @@ const NakiKapayimQuestionnaire = () => {
     if (!questionData) return;
 
     let nextQuestion = null;
+    let nextPath = currentPath;
 
     if (currentQuestion === 'occupation') {
       // Can't skip occupation question
@@ -297,6 +302,7 @@ const NakiKapayimQuestionnaire = () => {
 
       if (!nextQuestion && questionsConfig['general-questions']) {
         setCurrentPath('general-questions');
+        nextPath = 'general-questions';
         nextQuestion = 'small-loans';
         const generalQuestions = questionsConfig['general-questions'];
         const maxGeneralQuestionNumber = Math.max(
@@ -307,6 +313,7 @@ const NakiKapayimQuestionnaire = () => {
 
       if (nextQuestion === 'general-questions') {
         setCurrentPath('general-questions');
+        nextPath = 'general-questions';
         nextQuestion = 'small-loans';
       }
 
@@ -317,7 +324,7 @@ const NakiKapayimQuestionnaire = () => {
     }
 
     setCurrentQuestion(nextQuestion);
-    setQuestionHistory(prev => [...prev, nextQuestion]);
+    setQuestionHistory(prev => [...prev, { questionId: nextQuestion, path: nextPath }]);
   };
 
   const handleBack = () => {
@@ -325,39 +332,37 @@ const NakiKapayimQuestionnaire = () => {
 
     const newHistory = [...questionHistory];
     newHistory.pop(); // Remove current question
-    let previousQuestion = newHistory[newHistory.length - 1];
+    const previousEntry = newHistory[newHistory.length - 1];
+    const previousQuestion = previousEntry.questionId;
+    const previousPath = previousEntry.path;
 
     // Remove the answer for the current question and its details
     const newAnswers = { ...answers };
     delete newAnswers[previousQuestion];
 
-    // Recalculate total amount
     const newAnswerDetails = answerDetails.filter(detail => detail.questionId !== previousQuestion);
     const newTotal = newAnswerDetails.reduce((sum, detail) => sum + detail.amount, 0);
 
     setQuestionHistory(newHistory);
-    // setCurrentPath('tent-dweller');
-    // previousQuestion = 'scholarship';
     setCurrentQuestion(previousQuestion);
+    setCurrentPath(previousPath);
     setAnswerDetails(newAnswerDetails);
     setTotalAmount(newTotal);
 
-    // If backing to occupation, reset totalQuestions
+    // Set totalQuestions based on the previous path
+    const pathMaxNumbers = {
+      'tent-dweller': 47,
+      'employee': 58,
+      'service-provider': 54,
+      'product-seller': 49,
+      'broker': 52,
+      'general-questions': 58
+    };
+
     if (previousQuestion === 'occupation') {
       setTotalQuestions(58);
     } else {
-      const prevQuestionData = getCurrentQuestionDataById(previousQuestion);
-      if (prevQuestionData) {
-        const pathMaxNumbers = {
-          'tent-dweller': 47,
-          'employee': 58,
-          'service-provider': 54,
-          'product-seller': 49,
-          'broker': 52,
-          'general-questions': 58
-        };
-        setTotalQuestions(pathMaxNumbers[currentPath] || 58);
-      }
+      setTotalQuestions(pathMaxNumbers[previousPath] || 58);
     }
 
     // Reset custom input state
