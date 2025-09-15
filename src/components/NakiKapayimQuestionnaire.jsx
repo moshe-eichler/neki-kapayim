@@ -18,6 +18,8 @@ const NakiKapayimQuestionnaire = () => {
 
   const scrollContainerRef = useRef(null);
 
+  const paymentBaseUrl = 'https://ultra.kesherhk.info/external/paymentPage/317774?total';
+
   const getCurrentQuestionData = () => {
     if (currentQuestion === 'occupation') {
       return questionsConfig.occupation;
@@ -459,7 +461,7 @@ const NakiKapayimQuestionnaire = () => {
 
             <div className="text-center">
               <a
-                href={`https://ultra.kesherhk.info/external/paymentPage/317774?total=${totalAmount}`}
+                href={`${paymentBaseUrl}=${totalAmount}`}
                 rel="noopener noreferrer"
                 className="bg-teal-600 text-white px-8 py-4 rounded-lg hover:bg-teal-700 transition-colors inline-block text-lg font-semibold"
               >
