@@ -514,9 +514,9 @@ const NakiKapayimQuestionnaire = () => {
             {/* Main Content - Split Layout */}
             <div className="flex flex-col lg:flex-row gap-6 min-h-[500px]">
               {/* Right Side - Question and Options (65%) */}
-              <div className="flex-1 lg:basis-[60%]">
+              <div className="flex flex-col lg:basis-[60%]">
                 {/* Question Section */}
-                <div className="mb-8 mr-4">
+                <div className="mb-8 lg:mr-4 flex-grow">
                   <div className="flex items-center mb-10 justify-start mb-4">
                     {questionData.icon && (
                         <img
@@ -697,24 +697,25 @@ const NakiKapayimQuestionnaire = () => {
                 
                 {/* Finish Early Button */}
                 <div className="mt-4">
-                  <button
-                    onClick={handleFinishEarly}
-                    className="w-full px-4 py-3 text-white rounded-[7px] transition-colors text-lg font-medium"
+                  <a
+                    href={`https://ultra.kesherhk.info/external/paymentPage/317774?total=${totalAmount}`}
+                    className="w-full px-4 py-3 text-white rounded-[7px] transition-colors text-lg font-medium block text-center"
                     style={{
                       background: '#0E4952',
                       border: '0.5px solid #FFFFFFA8',
-                      opacity: 1
+                      opacity: 1,
+                      textDecoration: 'none'
                     }}
                   >
                     שלם כעת
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-  );
+);
 };
 
 export default NakiKapayimQuestionnaire;
