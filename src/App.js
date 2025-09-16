@@ -37,7 +37,7 @@ function App() {
                     <Route path="/" element={<NakiKapayimQuestionnaire />} />
 
                     {/* Route for payment redirect - only matches if not caught by above routes */}
-                    <Route path="/:amount" element={<PaymentRedirect />} />
+                    {/* <Route path="/:amount" element={<PaymentRedirect />} /> */}
                 </Routes>
             </Router>
         </div>
