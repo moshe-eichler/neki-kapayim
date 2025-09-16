@@ -985,6 +985,7 @@ export const questionsConfig = {
             // iconNo: 'https://raw.githubusercontent.com/moshe-eichler/neki-kapayim/refs/heads/main/src/static/icons/no.png',
             nextYes: 'transportation',
             nextNo: 'transportation',
+            amount: 25,
         },
         'transportation': {
             id: 'transportation',
