@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/:total",
-      "destination": "https://example.com/?total=:total",
+      "destination": "https://ultra.kesherhk.info/external/paymentPage/317774?total=:total",
       "permanent": true
     }
   ]
