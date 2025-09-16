@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/:total",
+      "destination": "https://example.com/?total=:total",
+      "permanent": true
+    }
+  ]
+}
