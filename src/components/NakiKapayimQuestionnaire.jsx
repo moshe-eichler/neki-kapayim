@@ -396,7 +396,7 @@ const NakiKapayimQuestionnaire = () => {
   useEffect(() => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTo({
-        top: 0,
+        top: 999999,
         behavior: 'smooth'
       });
     }
