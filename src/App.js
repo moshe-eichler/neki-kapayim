@@ -1,6 +1,6 @@
 // App.js
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams, Navigate } from 'react-router-dom';
 import './App.css';
 import NakiKapayimQuestionnaire from './components/NakiKapayimQuestionnaire';
 
@@ -9,19 +9,21 @@ function PaymentRedirect() {
     const { amount } = useParams();
 
     useEffect(() => {
-        // Validate that amount is a number
-        if (amount && !isNaN(amount) && amount.trim() !== '') {
+        // Only redirect if it's a valid number
+        if (amount && !isNaN(amount) && amount.trim() !== '' && parseFloat(amount) > 0) {
             const redirectUrl = `https://ultra.kesherhk.info/external/paymentPage/317774?total=${amount}`;
             window.location.href = redirectUrl;
-        } else {
-            // If it's not a number, redirect to base URL
-            window.location.href = '/';
         }
     }, [amount]);
 
+    // If not a valid number, redirect to home using Navigate component
+    if (!amount || isNaN(amount) || amount.trim() === '' || parseFloat(amount) <= 0) {
+        return <Navigate to="/" replace />;
+    }
+
     return (
         <div style={{ padding: '20px', textAlign: 'center' }}>
-            <p>Redirecting...</p>
+            <p>Redirecting to payment page...</p>
         </div>
     );
 }
@@ -31,11 +33,11 @@ function App() {
         <div className="App">
             <Router>
                 <Routes>
-                    {/* Route for payment redirect - matches any number */}
-                    <Route path="/:amount" element={<PaymentRedirect />} />
-
-                    {/* Default route for the questionnaire */}
+                    {/* Default route for the questionnaire - MUST come first */}
                     <Route path="/" element={<NakiKapayimQuestionnaire />} />
+
+                    {/* Route for payment redirect - only matches if not caught by above routes */}
+                    <Route path="/:amount" element={<PaymentRedirect />} />
                 </Routes>
             </Router>
         </div>
