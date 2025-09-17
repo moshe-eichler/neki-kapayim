@@ -496,7 +496,7 @@ const NakiKapayimQuestionnaire = () => {
           }}
       >
         <div className="lg:absolute lg:top-4 lg:left-4 lg:w-60">
-          <img src={logoImg} alt="Logo" className="w-full h-full" />
+          <img src={logoImg} alt="Logo" className="lg:w-full lg:h-full m-auto w-48" />
         </div>
         <div className="max-w-4xl mx-auto lg:mt-[150px]">
           {/* Header */}
