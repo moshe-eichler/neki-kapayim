@@ -18,8 +18,6 @@ const NakiKapayimQuestionnaire = () => {
 
   const scrollContainerRef = useRef(null);
 
-  const paymentBaseUrl = 'https://ultra.kesherhk.info/external/paymentPage/317774?total';
-
   const getCurrentQuestionData = () => {
     if (currentQuestion === 'occupation') {
       return questionsConfig.occupation;
@@ -405,7 +403,7 @@ const NakiKapayimQuestionnaire = () => {
   if (isComplete) {
     return (
       <div
-        className="min-h-screen p-4"
+        className="min-h-screen p-4 font-rubik"
         dir="rtl"
         style={{
           backgroundImage: `url(${backgroundImg})`,
@@ -460,13 +458,22 @@ const NakiKapayimQuestionnaire = () => {
             </div>
 
             <div className="text-center">
-              <a
-                href={`${paymentBaseUrl}${totalAmount}`}
-                rel="noopener noreferrer"
-                className="bg-teal-600 text-white px-8 py-4 rounded-lg hover:bg-teal-700 transition-colors inline-block text-lg font-semibold"
-              >
-                עבור לתשלום - {totalAmount.toLocaleString()} ש"ח
-              </a>
+              <div className="flex items-center justify-center gap-4">
+                <input
+                  type="number"
+                  value={totalAmount}
+                  onChange={(e) => setTotalAmount(Math.max(0, parseInt(e.target.value) || 0))}
+                  className="w-32 p-3 border border-gray-300 rounded-lg text-center text-lg font-semibold"
+                  min="0"
+                />
+                <a
+                  href={`/${totalAmount}`}
+                  rel="noopener noreferrer"
+                  className="bg-teal-600 text-white px-8 py-4 rounded-lg hover:bg-teal-700 transition-colors inline-block text-lg font-semibold"
+                >
+                  עבור לתשלום - {totalAmount.toLocaleString()} ש"ח
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -479,7 +486,7 @@ const NakiKapayimQuestionnaire = () => {
 
   return (
       <div
-          className="min-h-screen p-4"
+          className="min-h-screen p-4 font-rubik"
           dir="rtl"
           style={{
             backgroundImage: `url(${backgroundImg})`,
@@ -488,13 +495,13 @@ const NakiKapayimQuestionnaire = () => {
             backgroundAttachment: 'fixed'
           }}
       >
-        <div className="absolute top-4 left-4 w-60">
+        <div className="lg:absolute lg:top-4 lg:left-4 lg:w-60">
           <img src={logoImg} alt="Logo" className="w-full h-full" />
         </div>
-        <div className="max-w-4xl mx-auto mt-[150px]">
+        <div className="max-w-4xl mx-auto lg:mt-[150px]">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-[50px] text-[#165965] font-[600] font-h1 mb-2">האם אני נקי כפיים?</h1>
+            <h1 className="text-[35px] md:text-[75px] text-[#a1d1f6] font-[600] font-h1 mb-2 tracking-tighter">האם אני נקי כפיים?</h1>
           </div>
 
           {/* Main Card */}
@@ -533,7 +540,7 @@ const NakiKapayimQuestionnaire = () => {
                         </h3>
                     )}
                   </div>
-                  <h2 className="text-xl font-semibold text-gray-800 mb-10 leading-relaxed flex">
+                  <h2 className="text-2xl font-semibold text-gray-800 mb-10 leading-relaxed flex">
                     {questionData.text}
                   </h2>
 
@@ -543,7 +550,7 @@ const NakiKapayimQuestionnaire = () => {
                         <>
                           <button
                               onClick={() => handleAnswer('yes')}
-                              className="col-span-1 p-4 text-center bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-300 rounded-lg transition-colors flex items-center justify-center"
+                              className="col-span-1 p-4 text-center bg-white hover:bg-[#a1d1f6] border border-gray-200 hover:border-2 hover:border-[#0c7e96] rounded-lg transition-colors flex items-center justify-center"
                           >
                             {questionData.iconYes ? (
                                 <img
@@ -557,7 +564,7 @@ const NakiKapayimQuestionnaire = () => {
                           </button>
                           <button
                               onClick={() => handleAnswer('no')}
-                              className="col-span-1 p-4 text-center bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-300 rounded-lg transition-colors flex items-center justify-center"
+                              className="col-span-1 p-4 text-center bg-white hover:bg-[#a1d1f6] border border-gray-200 hover:border-2 hover:border-[#0c7e96] rounded-lg transition-colors flex items-center justify-center"
                           >
                             {questionData.iconNo ? (
                                 <img
@@ -575,7 +582,7 @@ const NakiKapayimQuestionnaire = () => {
                             <button
                                 key={index}
                                 onClick={() => handleCustomOptionClick(option)}
-                                className="min-h-[80px] text-center bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-300 rounded-lg transition-colors flex items-center justify-center"
+                                className="min-h-[80px] text-center bg-white hover:bg-teal-50 border border-gray-200 hover:border-teal-300 rounded-lg transition-colors flex items-center justify-center"
                             >
                               {option.icon ? (
                                   <img
@@ -646,13 +653,13 @@ const NakiKapayimQuestionnaire = () => {
                               : 'text-[#0C7E96]'
                       }`}
                   >
-                    הבא &gt;
+                    דלג &gt;
                   </button>
                 </div>
               </div>
 
               {/* Left Side - Amount Details (35%) */}
-              <div className="bg-white rounded-[7px] border border-[#000000A8] p-4 flex flex-col lg:basis-[40%]" style={{angle: '0deg', opacity: 1, borderWidth: '0.5px'}}>
+              <div className="bg-white rounded-[7px] border border-[#000000A8] p-3 flex flex-col lg:basis-[40%]" style={{angle: '0deg', opacity: 1, borderWidth: '0.5px'}}>
                 {/* Current Total */}
                 {/* <div className="bg-teal-50 rounded-lg p-4 mb-4">
                   <div className="text-center">
@@ -700,8 +707,8 @@ const NakiKapayimQuestionnaire = () => {
                 {/* Finish Early Button */}
                 <div className="mt-4">
                   <a
-                    href={`https://ultra.kesherhk.info/external/paymentPage/317774?total=${totalAmount}`}
-                    className="w-full px-4 py-3 text-white rounded-[7px] transition-colors text-lg font-medium block text-center"
+                    href={`/${totalAmount}`}
+                    className="w-full py-3 text-white rounded-[7px] transition-colors text-lg font-medium block text-center"
                     style={{
                       background: '#0E4952',
                       border: '0.5px solid #FFFFFFA8',
@@ -709,7 +716,7 @@ const NakiKapayimQuestionnaire = () => {
                       textDecoration: 'none'
                     }}
                   >
-                    שלם כעת
+                    לקיום "השבה" על הסכום או חלקו
                   </a>
                 </div>
               </div>

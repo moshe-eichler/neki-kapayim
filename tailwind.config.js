@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        'rubik': ['Rubik', 'sans-serif'],
         'hebrew': ['Heebo', 'sans-serif'],
         'h1': ['Frank Ruhl Libre', 'Sans-serif']
       },
