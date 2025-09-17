@@ -401,6 +401,7 @@ const NakiKapayimQuestionnaire = () => {
   }, [answerDetails.length]);
 
   if (isComplete) {
+    const totalCompleteAmount = totalAmount.toLocaleString();
     return (
       <div
         className="min-h-screen p-4 font-rubik"
@@ -422,7 +423,7 @@ const NakiKapayimQuestionnaire = () => {
             <div className="bg-teal-50 rounded-lg p-6 mb-6">
               <div className="text-center">
                 <p className="text-lg text-gray-700 mb-2">הסכום הכולל להשבה:</p>
-                <p className="text-4xl font-bold text-teal-600">{totalAmount.toLocaleString()} ש"ח</p>
+                <p className="text-4xl font-bold text-teal-600">{totalCompleteAmount} ש"ח</p>
               </div>
             </div>
 
