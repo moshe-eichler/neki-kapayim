@@ -582,7 +582,7 @@ const NakiKapayimQuestionnaire = () => {
                             <button
                                 key={index}
                                 onClick={() => handleCustomOptionClick(option)}
-                                className="min-h-[80px] text-center bg-white hover:bg-teal-50 border border-gray-200 hover:border-teal-300 rounded-lg transition-colors flex items-center justify-center"
+                                className="min-h-[80px] text-center bg-white hover:bg-[#a1d1f6] border border-gray-200 hover:border-2 hover:border-[#0c7e96] rounded-lg transition-colors flex items-center justify-center"
                             >
                               {option.icon ? (
                                   <img
