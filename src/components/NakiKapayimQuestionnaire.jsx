@@ -498,7 +498,7 @@ const NakiKapayimQuestionnaire = () => {
         <div className="lg:absolute lg:top-4 lg:left-4 lg:w-60">
           <img src={logoImg} alt="Logo" className="lg:w-full lg:h-full m-auto w-48" />
         </div>
-        <div className="max-w-4xl mx-auto lg:mt-[150px]">
+        <div className="max-w-4xl mx-auto lg:mt-[100px]">
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-[35px] md:text-[75px] text-[#a1d1f6] font-[600] font-h1 mb-2 tracking-tighter">האם אני נקי כפיים?</h1>
