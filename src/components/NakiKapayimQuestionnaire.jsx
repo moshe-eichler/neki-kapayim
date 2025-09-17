@@ -682,7 +682,7 @@ const NakiKapayimQuestionnaire = () => {
                           />
                           <div className='mt-2 mr-2'>{detail.section}</div>
                         </div>
-                        <div className="text-s font-bold mb-1">{detail.questionText}</div>
+                        <div className="text-s">{detail.questionText}</div>
                         <div className="flex justify-between items-center">
                           <span className="text-sm text-teal-600 font-medium">{detail.answerText}</span>
                           {detail.amount > 0 && (
