@@ -14,7 +14,9 @@ const NakiKapayimQuestionnaire = () => {
   const [customInput, setCustomInput] = useState('');
   const [showCustomInput, setShowCustomInput] = useState(false);
   const [customPlaceholder, setCustomPlaceholder] = useState('הכנס מספר...');
-  const [totalQuestions, setTotalQuestions] = useState(58); // Default to max (employee path)
+  const [totalQuestions, setTotalQuestions] = useState(58);
+  const [inputAmount, setInputAmount] = useState(0); // Separate state for input field
+  const [finalTotalAmount, setFinalTotalAmount] = useState(0); // Fixed total when complete
 
   const scrollContainerRef = useRef(null);
 
@@ -242,7 +244,9 @@ const NakiKapayimQuestionnaire = () => {
       };
       setTotalQuestions(pathTotals[finalAnswer] || 54);
       const pathQuestions = questionsConfig[finalAnswer];
-      nextQuestion = Object.keys(pathQuestions)[0];
+      if (pathQuestions) {
+        nextQuestion = Object.keys(pathQuestions)[0];
+      }
     } else {
       if (questionData.type === 'yes-no') {
         nextQuestion = finalAnswer === 'yes' ? questionData.nextYes : questionData.nextNo;
@@ -277,6 +281,10 @@ const NakiKapayimQuestionnaire = () => {
 
       // If we've reached the end
       if (nextQuestion === 'summary' || !nextQuestion) {
+        // Set final total amount when completing
+        const newTotal = totalAmount + amountToAdd;
+        setFinalTotalAmount(newTotal);
+        setInputAmount(newTotal);
         setIsComplete(true);
         return;
       }
@@ -322,6 +330,8 @@ const NakiKapayimQuestionnaire = () => {
       }
 
       if (nextQuestion === 'summary' || !nextQuestion) {
+        setFinalTotalAmount(totalAmount);
+        setInputAmount(totalAmount);
         setIsComplete(true);
         return;
       }
@@ -375,10 +385,6 @@ const NakiKapayimQuestionnaire = () => {
     setCustomPlaceholder('הכנס מספר...');
   };
 
-  const handleFinishEarly = () => {
-    setIsComplete(true);
-  };
-
   const getProgress = () => {
     if (isComplete) return 100;
 
@@ -401,7 +407,6 @@ const NakiKapayimQuestionnaire = () => {
   }, [answerDetails.length]);
 
   if (isComplete) {
-    const totalCompleteAmount = totalAmount.toLocaleString();
     return (
       <div
         className="min-h-screen p-4 font-rubik"
@@ -423,7 +428,7 @@ const NakiKapayimQuestionnaire = () => {
             <div className="bg-teal-50 rounded-lg p-6 mb-6">
               <div className="text-center">
                 <p className="text-lg text-gray-700 mb-2">הסכום הכולל להשבה:</p>
-                <p className="text-4xl font-bold text-teal-600">{totalCompleteAmount} ש"ח</p>
+                <p className="text-4xl font-bold text-teal-600">{finalTotalAmount.toLocaleString()} ש"ח</p>
               </div>
             </div>
 
@@ -462,17 +467,17 @@ const NakiKapayimQuestionnaire = () => {
               <div className="flex items-center justify-center gap-4">
                 <input
                   type="number"
-                  value={totalAmount}
-                  onChange={(e) => setTotalAmount(Math.max(0, parseInt(e.target.value) || 0))}
+                  value={inputAmount}
+                  onChange={(e) => setInputAmount(Math.max(0, parseInt(e.target.value) || 0))}
                   className="w-32 p-3 border border-gray-300 rounded-lg text-center text-lg font-semibold"
                   min="0"
                 />
                 <a
-                  href={`/${totalAmount}`}
+                  href={`/${inputAmount}`}
                   rel="noopener noreferrer"
                   className="bg-teal-600 text-white px-8 py-4 rounded-lg hover:bg-teal-700 transition-colors inline-block text-lg font-semibold"
                 >
-                  עבור לתשלום - {totalAmount.toLocaleString()} ש"ח
+                  עבור לתשלום - {inputAmount.toLocaleString()} ש"ח
                 </a>
               </div>
             </div>
@@ -483,7 +488,25 @@ const NakiKapayimQuestionnaire = () => {
   }
 
   const questionData = getCurrentQuestionData();
-  if (!questionData) return null;
+  if (!questionData) {
+    return (
+      <div className="min-h-screen p-4 font-rubik flex items-center justify-center" dir="rtl">
+        <div className="bg-white rounded-lg p-8 text-center">
+          <h2 className="text-xl font-bold mb-4">השאלון הסתיים</h2>
+          <button
+            onClick={() => {
+              setFinalTotalAmount(totalAmount);
+              setInputAmount(totalAmount);
+              setIsComplete(true);
+            }}
+            className="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors"
+          >
+            עבור לסיכום
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
       <div
@@ -499,7 +522,7 @@ const NakiKapayimQuestionnaire = () => {
         <div className="lg:absolute lg:top-4 lg:left-4 lg:w-60">
           <img src={logoImg} alt="Logo" className="lg:w-full lg:h-full m-auto w-48" />
         </div>
-        <div className="max-w-4xl mx-auto lg:mt-[100px]">
+        <div className="max-w-4xl mx-auto lg:mt-[150px]">
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-[35px] md:text-[75px] text-[#a1d1f6] font-[600] font-h1 mb-2 tracking-tighter">האם אני נקי כפיים?</h1>
@@ -583,7 +606,7 @@ const NakiKapayimQuestionnaire = () => {
                             <button
                                 key={index}
                                 onClick={() => handleCustomOptionClick(option)}
-                                className="min-h-[80px] text-center bg-white hover:bg-[#a1d1f6] border border-gray-200 hover:border-2 hover:border-[#0c7e96] rounded-lg transition-colors flex items-center justify-center"
+                                className="min-h-[80px] text-center bg-white hover:bg-teal-50 border border-gray-200 hover:border-teal-300 rounded-lg transition-colors flex items-center justify-center"
                             >
                               {option.icon ? (
                                   <img
@@ -661,14 +684,6 @@ const NakiKapayimQuestionnaire = () => {
 
               {/* Left Side - Amount Details (35%) */}
               <div className="bg-white rounded-[7px] border border-[#000000A8] p-3 flex flex-col lg:basis-[40%]" style={{angle: '0deg', opacity: 1, borderWidth: '0.5px'}}>
-                {/* Current Total */}
-                {/* <div className="bg-teal-50 rounded-lg p-4 mb-4">
-                  <div className="text-center">
-                    <p className="text-sm text-gray-600 mb-1">סכום נוכחי להשבה</p>
-                    <p className="text-2xl font-bold text-teal-600">{totalAmount.toLocaleString()} ש"ח</p>
-                  </div>
-                </div> */}
-
                 {/* Question History */}
                 <div className="mb-4 flex-1">
                   <h4 className="mb-3 flex justify-end ml-3" style={{ fontFamily: 'Rubik', fontWeight: 400, fontStyle: 'normal', fontSize: '25px', lineHeight: '100%', letterSpacing: '-3%', color: '#B4CFD4' }}>סיכום ביניים</h4>
@@ -683,7 +698,7 @@ const NakiKapayimQuestionnaire = () => {
                           />
                           <div className='mt-2 mr-2'>{detail.section}</div>
                         </div>
-                        <div className="text-s">{detail.questionText}</div>
+                        <div className="text-s font-bold mb-1">{detail.questionText}</div>
                         <div className="flex justify-between items-center">
                           <span className="text-sm text-teal-600 font-medium">{detail.answerText}</span>
                           {detail.amount > 0 && (
