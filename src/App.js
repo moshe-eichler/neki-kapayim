@@ -33,11 +33,7 @@ function App() {
         <div className="App">
             <Router>
                 <Routes>
-                    {/* Default route for the questionnaire - MUST come first */}
                     <Route path="/" element={<NakiKapayimQuestionnaire />} />
-
-                    {/* Route for payment redirect - only matches if not caught by above routes */}
-                    {/* <Route path="/:amount" element={<PaymentRedirect />} /> */}
                 </Routes>
             </Router>
         </div>
