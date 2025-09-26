@@ -2,48 +2,48 @@
 const nodemailer = require('nodemailer');
 
 export default async function handler(req, res) {
-    const { total } = req.query;
+  const { total } = req.query;
 
-    // Collect tracking data
-    const trackingData = {
-        total,
-        timestamp: new Date().toISOString(),
-        ip: req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown',
-        userAgent: req.headers['user-agent'] || 'unknown',
-        referer: req.headers.referer || 'direct',
-        country: req.headers['cf-ipcountry'] || 'unknown' // Cloudflare header
-    };
+  // Collect tracking data
+  const trackingData = {
+    total,
+    timestamp: new Date().toISOString(),
+    ip: req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown',
+    userAgent: req.headers['user-agent'] || 'unknown',
+    referer: req.headers.referer || 'direct',
+    country: req.headers['cf-ipcountry'] || 'unknown' // Cloudflare header
+  };
 
-    // Send email notification
-    try {
-        await sendGmailNotification(trackingData);
-        console.log('✅ Email notification sent successfully');
-    } catch (error) {
-        console.error('❌ Email notification failed:', error.message);
-        // Continue with redirect even if email fails
-    }
+  // Send email notification
+  try {
+    await sendGmailNotification(trackingData);
+    console.log('✅ Email notification sent successfully');
+  } catch (error) {
+    console.error('❌ Email notification failed:', error.message);
+    // Continue with redirect even if email fails
+  }
 
-    // Always redirect to payment page
-    const destination = `https://ultra.kesherhk.info/external/paymentPage/317774?total=${total}`;
-    res.redirect(301, destination);
+  // Always redirect to payment page
+  const destination = `https://ultra.kesherhk.info/external/paymentPage/317774?total=${total}`;
+  res.redirect(301, destination);
 }
 
 async function sendGmailNotification(data) {
-    // Create Gmail transporter
-    const transporter = nodemailer.createTransporter({
-        service: 'gmail',
-        auth: {
-            user: process.env.GMAIL_USER,
-            pass: process.env.GMAIL_APP_PASSWORD,
-        },
-    });
+  // Create Gmail transporter
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+  });
 
-    // Email content
-    const emailContent = {
-        from: process.env.GMAIL_USER,
-        to: process.env.NOTIFICATION_EMAIL,
-        subject: `💰 התרעת הפנית תשלום - $${data.total}`,
-        html: `
+  // Email content
+  const emailContent = {
+    from: process.env.GMAIL_USER,
+    to: process.env.NOTIFICATION_EMAIL,
+    subject: `💰 התרעת הפנית תשלום - $${data.total}`,
+    html: `
       <!DOCTYPE html>
       <html>
       <head>
@@ -136,8 +136,8 @@ async function sendGmailNotification(data) {
       </body>
       </html>
     `,
-        // Plain text version for compatibility
-        text: `
+    // Plain text version for compatibility
+    text: `
 התרעת הפנית תשלום!
 
 סכום: $${data.total}
@@ -149,24 +149,24 @@ User Agent: ${data.userAgent}
 
 הודעה זו נשלחה אוטומטית.
     `
-    };
+  };
 
-    // Send email
-    const info = await transporter.sendMail(emailContent);
-    console.log('Email sent successfully:', info.messageId);
+  // Send email
+  const info = await transporter.sendMail(emailContent);
+  console.log('Email sent successfully:', info.messageId);
 }
 
 // Helper function to parse user agent
 function getUserDevice(userAgent) {
-    if (!userAgent) return 'Unknown';
+  if (!userAgent) return 'Unknown';
 
-    if (userAgent.includes('Mobile')) return '📱 Mobile';
-    if (userAgent.includes('Tablet')) return '📱 Tablet';
-    if (userAgent.includes('Windows')) return '🖥️ Windows PC';
-    if (userAgent.includes('Mac')) return '🖥️ Mac';
-    if (userAgent.includes('Linux')) return '🖥️ Linux';
-    if (userAgent.includes('iPhone')) return '📱 iPhone';
-    if (userAgent.includes('Android')) return '📱 Android';
+  if (userAgent.includes('Mobile')) return '📱 Mobile';
+  if (userAgent.includes('Tablet')) return '📱 Tablet';
+  if (userAgent.includes('Windows')) return '🖥️ Windows PC';
+  if (userAgent.includes('Mac')) return '🖥️ Mac';
+  if (userAgent.includes('Linux')) return '🖥️ Linux';
+  if (userAgent.includes('iPhone')) return '📱 iPhone';
+  if (userAgent.includes('Android')) return '📱 Android';
 
-    return '🖥️ Desktop';
+  return '🖥️ Desktop';
 }
