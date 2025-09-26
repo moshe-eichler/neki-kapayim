@@ -77,7 +77,7 @@ async function sendGmailNotification(data) {
             padding: 15px; 
             border-radius: 5px; 
             margin: 10px 0;
-            border-left: 4px solid #28a745;
+            border-right: 4px solid #28a745;
           }
           .label { 
             font-weight: bold; 
@@ -100,7 +100,7 @@ async function sendGmailNotification(data) {
       <body dir="rtl" lang="he">
         <div class="container">
           <div class="header">
-            <h2>🚨 התרעת הפנית תשלום</h2>
+            <h2>התרעת הפנית תשלום</h2>
           </div>
           
           <div class="amount">
@@ -108,19 +108,19 @@ async function sendGmailNotification(data) {
           </div>
           
           <div class="info-box">
-            <div><span class="label">📅 תאריך ושעה:</span><span class="value">${new Date(data.timestamp).toLocaleString()}</span></div>
+            <div><span class="label">📅 תאריך ושעה: </span><span class="value">${new Date(data.timestamp).toLocaleString()}</span></div>
           </div>
           
           <div class="info-box">
-            <div><span class="label">🌐 IP כתובת:</span><span class="value">${data.ip}</span></div>
+            <div><span class="label">🌐 כתובת IP: </span><span class="value">${data.ip}</span></div>
           </div>
           
           <div class="info-box">
-            <div><span class="label">🔗 הפניה:</span><span class="value">${data.referer}/payment/${data.total}</span></div>
+            <div><span class="label">🔗 הפניה: </span><span class="value">${data.referer}/payment/${data.total}</span></div>
           </div>
           
           <div class="info-box">
-            <div><span class="label">💻 מכשיר:</span><span class="value">${getUserDevice(data.userAgent)}</span></div>
+            <div><span class="label">💻 מכשיר: </span><span class="value">${getUserDevice(data.userAgent)}</span></div>
           </div>
           
           <div class="footer">
