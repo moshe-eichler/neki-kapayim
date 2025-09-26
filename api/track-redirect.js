@@ -41,7 +41,7 @@ async function sendGmailNotification(data) {
   const emailContent = {
     from: process.env.GMAIL_USER,
     to: process.env.NOTIFICATION_EMAIL,
-    subject: `התרעת הפנית תשלום - ₪${data.total}`,
+    subject: "התרעת הפנית תשלום - נקי כפיים",
     html: `
       <!DOCTYPE html>
       <html>
@@ -116,7 +116,7 @@ async function sendGmailNotification(data) {
           </div>
           
           <div class="info-box">
-            <div><span class="label">🔗 הפניה: </span><span class="value">${data.referer}/payment/${data.total}</span></div>
+            <div><span class="label">🔗 הפניה: </span><span class="value">${data.referer}payment/${data.total}</span></div>
           </div>
           
           <div class="info-box">
