@@ -116,7 +116,7 @@ async function sendGmailNotification(data) {
           </div>
           
           <div class="info-box">
-            <div><span class="label">🔗 הפניה:</span><span class="value">${data.referer}/payment/${total}</span></div>
+            <div><span class="label">🔗 הפניה:</span><span class="value">${data.referer}/payment/${data.total}</span></div>
           </div>
           
           <div class="info-box">
