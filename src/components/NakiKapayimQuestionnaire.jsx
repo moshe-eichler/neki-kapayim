@@ -473,7 +473,7 @@ const NakiKapayimQuestionnaire = () => {
                   min="0"
                 />
                 <a
-                  href={`/${inputAmount}`}
+                  href={`/payment/${inputAmount}`}
                   rel="noopener noreferrer"
                   className="bg-teal-600 text-white px-8 py-4 rounded-lg hover:bg-teal-700 transition-colors inline-block text-lg font-semibold"
                 >
@@ -723,7 +723,7 @@ const NakiKapayimQuestionnaire = () => {
                 {/* Finish Early Button */}
                 <div className="mt-4">
                   <a
-                    href={`/${totalAmount}`}
+                    href={`/payment/${totalAmount}`}
                     className="w-full py-3 text-white rounded-[7px] transition-colors text-lg font-medium block text-center"
                     style={{
                       background: '#0E4952',

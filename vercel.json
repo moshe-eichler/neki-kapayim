@@ -1,8 +1,7 @@
 {
-  "analytics": true,
   "redirects": [
     {
-      "source": "/:total",
+      "source": "/payment/:total",
       "destination": "https://ultra.kesherhk.info/external/paymentPage/317774?total=:total",
       "permanent": true
     }
