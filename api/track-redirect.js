@@ -8,10 +8,9 @@ export default async function handler(req, res) {
   const trackingData = {
     total,
     timestamp: new Date().toISOString(),
-    ip: req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown',
-    userAgent: req.headers['user-agent'] || 'unknown',
+    ip: req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'לא ידוע',
+    userAgent: req.headers['user-agent'] || 'לא ידוע',
     referer: req.headers.referer || 'direct',
-    country: req.headers['cf-ipcountry'] || 'unknown' // Cloudflare header
   };
 
   // Send email notification
@@ -42,7 +41,7 @@ async function sendGmailNotification(data) {
   const emailContent = {
     from: process.env.GMAIL_USER,
     to: process.env.NOTIFICATION_EMAIL,
-    subject: `💰 התרעת הפנית תשלום - $${data.total}`,
+    subject: `התרעת הפנית תשלום - ₪${data.total}`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -98,14 +97,14 @@ async function sendGmailNotification(data) {
           }
         </style>
       </head>
-      <body>
+      <body dir="rtl" lang="he">
         <div class="container">
           <div class="header">
             <h2>🚨 התרעת הפנית תשלום</h2>
           </div>
           
           <div class="amount">
-            Amount: $${data.total}
+            סה״כ: ₪${data.total}
           </div>
           
           <div class="info-box">
@@ -117,11 +116,7 @@ async function sendGmailNotification(data) {
           </div>
           
           <div class="info-box">
-            <div><span class="label">🌍 מדינה:</span><span class="value">${data.country}</span></div>
-          </div>
-          
-          <div class="info-box">
-            <div><span class="label">🔗 הפניה:</span><span class="value">${data.referer}</span></div>
+            <div><span class="label">🔗 הפניה:</span><span class="value">${data.referer}/payment/${total}</span></div>
           </div>
           
           <div class="info-box">
@@ -130,7 +125,7 @@ async function sendGmailNotification(data) {
           
           <div class="footer">
             התראה זו נוצרה אוטומטית כאשר מישהו ניגש לקישור התשלום שלך.<br>
-            כתובת אתר להפניה: /payment/${data.total}
+            כתובת אתר להפניה: https://ultra.kesherhk.info/external/paymentPage/317774?total${data.total}
           </div>
         </div>
       </body>
@@ -158,7 +153,7 @@ User Agent: ${data.userAgent}
 
 // Helper function to parse user agent
 function getUserDevice(userAgent) {
-  if (!userAgent) return 'Unknown';
+  if (!userAgent) return 'לא ידוע';
 
   if (userAgent.includes('Mobile')) return '📱 Mobile';
   if (userAgent.includes('Tablet')) return '📱 Tablet';
