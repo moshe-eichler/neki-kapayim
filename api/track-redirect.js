@@ -112,7 +112,7 @@ async function sendGmailNotification(data) {
           </div>
           
           <div class="info-box">
-            <div><span class="label">🌐 כתובת IP: </span><span class="value">${data.ip}</span></div>
+            <div><span class="label">🌐 כתובת IP (מקור): </span><span class="value">${data.ip}</span></div>
           </div>
           
           <div class="info-box">
