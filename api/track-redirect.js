@@ -125,7 +125,7 @@ async function sendGmailNotification(data) {
           
           <div class="footer">
             התראה זו נוצרה אוטומטית כאשר מישהו ניגש לקישור התשלום שלך.<br>
-            כתובת אתר להפניה: https://ultra.kesherhk.info/external/paymentPage/317774?total${data.total}
+            כתובת אתר להפניה: https://ultra.kesherhk.info/external/paymentPage/317774?total=${data.total}
           </div>
         </div>
       </body>
