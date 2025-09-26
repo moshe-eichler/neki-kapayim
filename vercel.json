@@ -1,9 +1,13 @@
 {
-  "redirects": [
+  "rewrites": [
     {
       "source": "/payment/:total",
-      "destination": "https://ultra.kesherhk.info/external/paymentPage/317774?total=:total",
-      "permanent": true
+      "destination": "/api/track-redirect?total=:total"
     }
-  ]
+  ],
+  "functions": {
+    "api/track-redirect.js": {
+      "maxDuration": 15
+    }
+  }
 }
