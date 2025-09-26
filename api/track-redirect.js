@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     timestamp: new Date().toISOString(),
     ip: req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'לא ידוע',
     userAgent: req.headers['user-agent'] || 'לא ידוע',
-    referer: req.headers.referer || 'direct',
+    referer: req.headers.referer || 'https://neki-kapayim.vercel.app/',
   };
 
   // Send email notification
